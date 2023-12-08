@@ -54,7 +54,7 @@ The `/fd` directory serves as the storage container for front-end assets such as
 
 The `/storage` directory designated for uploaded files, and the framework facilitates easy file uploads into this directory.
 
-Further documents are in the `/docs` directory.
+~~Further documents are in the `/docs` directory.~~(Coming soon...)
 
 ## 🚀 Next steps
 
