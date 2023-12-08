@@ -1,0 +1,15 @@
+
+@import "sample.sub";
+
+div.wrapper {
+  margin: $margin;
+
+  div {
+    color: $color;
+    margin-bottom: 2rem;
+
+    &.title {
+      color: white;
+    }
+  }
+}
