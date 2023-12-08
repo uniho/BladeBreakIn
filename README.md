@@ -117,7 +117,7 @@ While files belonging to BladeBreakIn, including sample files, will be overwritt
 
 ## 🎵 Code of conduct
 
-This project is learning from [The Rust's Code of conduct](https://www.rust-lang.org/policies/code-of-conduct):
+This project draws inspiration from [The Rust's Code of conduct](https://www.rust-lang.org/policies/code-of-conduct):
 * We are committed to providing a friendly, safe and welcoming environment for all, regardless of level of experience, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, nationality, or other similar characteristic.
 * Please avoid using overtly sexual aliases or other nicknames that might detract from a friendly, safe and welcoming environment for all.
 * Please be kind and courteous. There’s no need to be mean or rude.
