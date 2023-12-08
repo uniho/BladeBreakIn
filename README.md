@@ -52,7 +52,7 @@ This sample utilizes the Blade template (`.blade.php`), but you have the flexibi
 
 The `/fd` directory serves as the storage container for front-end assets such as HTML, CSS, JS, etc. Feel free to use it.
 
-The `/storage` directory designated for uploaded files, and the framework facilitates easy file uploads into this directory.
+The `/storage` directory designated for publicly uploaded files, and the framework facilitates easy file uploads into this directory.
 
 ~~Further documents are in the `/docs` directory.~~(Coming soon...)
 
