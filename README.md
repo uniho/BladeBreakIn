@@ -19,7 +19,7 @@ Laravel is a very popular web application framework with expressive, elegant syn
 ## 🎼 Get started
 
 1. Git-Clone or Download the latest version of BladeBreakIn.
-1. Copy directries and files in the `src` directory to your web server's document root directory. Of course you can chose to copy these under a sub directory(e.g. `subdir`).
+1. Copy directries and files to your web server's document root directory. Of course you can chose to copy these under a sub directory(e.g. `subdir`).
 
 ```
 <Your Web Server's DocumentRoot>
