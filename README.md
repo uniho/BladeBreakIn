@@ -2,24 +2,22 @@
 
 ## The Next Generation of `S+E+L+F` Development
 
-Are you still using the heavy CMS for non-eco-friendly?
+Are you still using a heavy CMS that's not eco-friendly?
 
-The heavy CMS is definitely great, but aren't you tired of it?
+While heavy CMSs have their merits, do you ever feel exhausted by them?
 
-More isn't always better, either for the customer or for the Web Coders and/or Artisans.
-We should cut our coat according to our cloth.
+More isn't always better, whether for the customer or for web coders and artisans. We should tailor our approach to our resources.
 
-BladeBreakIn is a WEB making system for the WEB Coders.
+Introducing BladeBreakIn, a web-making system designed for web coders.
+
+BladeBreakIn is built on [Laravel](https://laravel.com/) and focuses on `S+E+L+F` development—Simple, Easy, Light, and Fast.
  
-BladeBreakIn is based on the [Laravel](https://laravel.com/),
-and aims at `S+E+L+F` development that means SIMPLE, EASY, LIGHT, and FAST.
-
-Laravel is a very popular web application framework with expressive, elegant syntax, especialy [Blade Templating Engine](https://laravel.com/docs/master/blade) is unprecedented, and thus it makes Web Coders release from the many issues, and the black box of clasical codes.
+Laravel, a highly popular web application framework, boasts expressive, elegant syntax. In particular, the Blade Templating Engine is unparalleled, liberating web coders from numerous issues and the black box of classical code.
 
 ## 🎼 Get started
 
 1. Git-Clone or Download the latest version of BladeBreakIn.
-1. Copy directries and files to your web server's document root directory. Of course you can chose to copy these under a sub directory(e.g. `subdir`).
+1. Copy the directories and files to your web server's document root directory. Alternatively, you can choose to copy them under a subdirectory (e.g., `subdir`).
 
 ```
 <Your Web Server's DocumentRoot>
@@ -36,11 +34,9 @@ Laravel is a very popular web application framework with expressive, elegant syn
        ┊
 ```
 
-1. That's all if your Web Server is the Apache. 
-`.htaccess` is suppose to defend your `bd` directory.
-Otherwise, you must block access to `bd` directory from outgoing. For instance, set the directory's permission for 700.
+1. That's all if your web server is Apache. The `.htaccess` file is supposed to secure your `/bd` directory. Otherwise, you must block access to the `/bd` directory from the outside. For instance, set the directory's permissions to 700.
 
-1. You can just see the sample page when access to  `https:://your-domain/subdir/` with your browser.
+1. You can view the sample page by accessing `https://your-domain/subdir/` in your browser.
 
 ## 👶 First steps
 
@@ -48,15 +44,15 @@ See sample codes put in `/bd/views/sample` and `/bd/scss/sample` directories.
 
 Let's make your `/bd/views/index.blade.php`.
 
-You can just see the new your page when access to `https:://your-domain/subdir/`.
+You can view your new page by accessing `https://your-domain/subdir/`.
 
 If you have built websites with PHP langauge, you should be able to create new Web site soon.
 
-These sample just use the Blade template(`.blade.php`), but you can use your favorite JS framework for front end - [ReactJS](https://reactjs.org/), [jQuery](https://jquery.com/), [AngularJS](https://angularjs.org/), [VueJS](https://vuejs.org/), [SolidJS](https://www.solidjs.com/), etc., or even just pure vanilla JavaScript.
+This sample utilizes the Blade template (`.blade.php`), but you have the flexibility to employ your preferred front-end JS framework such as [ReactJS](https://reactjs.org/), [jQuery](https://jquery.com/), [AngularJS](https://angularjs.org/), [VueJS](https://vuejs.org/), [SolidJS](https://www.solidjs.com/), or even opt for pure vanilla JavaScript.
 
-`fd` directory is the storage box for html, css, etc. You can use it freelly.
+The `/fd` directory serves as the storage container for front-end assets such as HTML, CSS, JS, etc. Feel free to use it.
 
-`storage` directory is for uploaded files. Laravel can upload files into it.
+The `/storage` directory designated for uploaded files, and the framework facilitates easy file uploads into this directory.
 
 Further documents are in the `/docs` directory.
 
@@ -64,9 +60,9 @@ Further documents are in the `/docs` directory.
 
 Rename `/bd/on.sample.php` to `/bd/on.php`.
 
-Then you can write the routing and others to Web service procedures.
+Afterward, you can proceed to write the routing and other necessary procedures for the web service.
 
-For example, show '/views/sample/test.blade.php' when `https:://your-uri/test/` is called from a browser,
+For instance, to display `/views/sample/test.blade.php` when `https://your-uri/test/` is accessed from a browser, you can configure the appropriate routing,
 
 ``` on.php
 
@@ -79,8 +75,7 @@ For example, show '/views/sample/test.blade.php' when `https:://your-uri/test/` 
 
 ```
 
-Laravel's routing has many functions.
-See [Laravel's Routing Page](https://laravel.com/docs/master/routing).
+Laravel's routing system offers a variety of functions. For detailed information and examples, refer to [Laravel's Routing Page](https://laravel.com/docs/master/routing).
 
 ## 🚀 Debug Mode
 
@@ -93,7 +88,7 @@ See [Laravel's Routing Page](https://laravel.com/docs/master/routing).
 
 ```
 
-Access `https:://your-uri/debugbar.php?secret=your secret key`.
+Access `https://your-uri/debugbar.php?secret=your secret key`.
 
 Or, 
 
@@ -106,8 +101,7 @@ Or,
 
 ```
 
-But don't forget security issues, last example allow to see the debug results to all web visitors. 
-
+However, it's crucial not to overlook security considerations. In the last example, it's worth noting that allowing all web visitors to see the debug results could pose a security risk.
 
 ## 🚀 Maintenance Mode
 
@@ -115,12 +109,14 @@ Coming soon...
 
 ## 🚀 Update BladeBreakIn
 
-It's also easy.
-Just overwrite new files belong to BladeBreakIn.
+Making updates is also a straightforward process.
 
-The files belong to BladeBreakIn(also sample files) will be overwritten, but your own directories and files are safe.
+Simply overwrite the new files that belong to BladeBreakIn.
+
+While files belonging to BladeBreakIn, including sample files, will be overwritten, your custom directories and files remain unaffected.
 
 ## 🎵 Code of conduct
+
 This project is learning from [The Rust's Code of conduct](https://www.rust-lang.org/policies/code-of-conduct):
 * We are committed to providing a friendly, safe and welcoming environment for all, regardless of level of experience, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, nationality, or other similar characteristic.
 * Please avoid using overtly sexual aliases or other nicknames that might detract from a friendly, safe and welcoming environment for all.
