@@ -24,7 +24,7 @@
       </div>
       <div>
         Markdown => <br/>
-        {!! Utils\Compilers::markdown('sample.test', ['test' => 2]) !!}
+        {!! Compilers::markdown('sample.test', ['test' => 2]) !!}
       </div>
     </div>
   </body>
