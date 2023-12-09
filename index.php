@@ -1,6 +1,7 @@
 <?php
 
 define('LARAVEL_START', microtime(true));
+define('__BASE_DIR__', __DIR__);
 
 // Check If The Application Is Under Maintenance
 if (is_file(__DIR__.'/bd/laravel/storage/framework/down')) {
