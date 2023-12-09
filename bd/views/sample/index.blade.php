@@ -22,6 +22,10 @@
         Your Content => <br/>
         {{ request()->getContent() }}
       </div>
+      <div>
+        Markdown => <br/>
+        {!! Utils\Compilers::markdown('sample.test', ['test' => 2]) !!}
+      </div>
     </div>
   </body>
 </html>
