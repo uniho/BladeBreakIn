@@ -1,7 +1,5 @@
 <?php
 
-namespace Utils;
-
 final class Compilers
 {
   //
