@@ -43,7 +43,7 @@ final class Compilers
     };
 
     $engine = new \Illuminate\View\Engines\CompilerEngine($compiler, app()['files']);
-    $file = './bd/scss/'.strtr($file, '.', '/').'.scss';
+    $file = \HQ::basePath('bd/scss/'.strtr($file, '.', '/').'.scss');
     return $engine->get($file);
   }
 
@@ -119,7 +119,7 @@ final class Compilers
     };
 
     $engine = new \Illuminate\View\Engines\CompilerEngine($compiler, app()['files']);
-    $file = './bd/markdowns/'.strtr($file, '.', '/').'.md';
+    $file = \HQ::basePath('bd/markdowns/'.strtr($file, '.', '/').'.md');
     $contents = $engine->get($file);
     $frontmatter = '';
     $body = $contents;
