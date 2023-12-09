@@ -239,6 +239,11 @@ final class HQ
     \CachedConfig::set('$$__DEBUGBAR_PAGE_SECRET', $secret);
   }
 
+  public static function basePath($path = '')
+  {
+    return __BASE_DIR__.'/'.rtrim($path, '\/');
+  }
+
   private static function events_exists(): bool
   {
     if (!class_exists('\HQ\On::class', false)) {
