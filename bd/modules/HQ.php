@@ -67,7 +67,7 @@ final class HQ
     }
 
     if ($request->query('css_route')) {
-      $css = \Utils\Compilers::scssCompile($request->query('css_route'));
+      $css = \Compilers::scssCompile($request->query('css_route'));
       $response = Response::make($css, 200);
       return $response->header('Content-Type', 'text/css; charset=utf-8');
     }
