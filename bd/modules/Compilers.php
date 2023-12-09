@@ -3,7 +3,7 @@
 final class Compilers
 {
   //
-  public static function scssCompile($file, $data = [])
+  public static function scss($file, $data = [])
   {
     $compiler = new class($data) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
     {
