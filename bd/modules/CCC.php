@@ -4,7 +4,7 @@ final class CCC
 {
   const APP_NAME = 'BladeBreakIn';
 
-  const DIR_LARAVEL = './bd/laravel';
+  const DIR_LARAVEL = __BASE_DIR__ . '/bd/laravel';
 
   const FILE_CFG_APP = '/storage/framework/config-app.php';
   const FILE_DEBUG = '/storage/framework/debug.json';
