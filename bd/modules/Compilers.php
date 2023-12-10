@@ -25,7 +25,7 @@ final class Compilers
                 return null;
               }
 
-              $path = './bd/scss/'.strtr($path, '.', '/').'.scss';
+              $path = \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($path, '.', '/').'.scss';
               if (!file_exists($path)) {
                 return null;
               }
@@ -54,7 +54,7 @@ final class Compilers
       return $core;
     }  
 
-    return $core->file(\HQ::basePath('bd/scss/'.strtr($file, '.', '/').'.scss'), $data, $options);
+    return $core->file(\HQ::getenv('CCC::SCSS_PATH').'/'.strtr($file, '.', '/').'.scss', $data, $options);
   }
 
   //
@@ -157,6 +157,6 @@ final class Compilers
       return $core;
     }  
 
-    return $core->file(\HQ::basePath('bd/markdowns/'.strtr($file, '.', '/').'.md'), $data);
+    return $core->file(\HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($file, '.', '/').'.md', $data);
   }
 }

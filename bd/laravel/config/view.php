@@ -14,7 +14,7 @@ return [
     */
 
     'paths' => [
-        __DIR__.'/../../views', // ※
+        \HQ::getenv('CCC::VIEWS_PATH'), // ※
         resource_path('views'),
     ],
 
