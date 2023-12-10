@@ -3,17 +3,17 @@
 final class Compilers
 {
   //
-  public static function scss($file = false, $data = [])
+  public static function scss($file = false, $data = [], $options = [])
   {
     $core = new class {
-      public function file($file, $data = [])
+      public function file($file, $data = [], $options = [])
       {
-        $compiler = new class($data) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class($data, $options) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
           private $data;
-          public function __construct($data)
+          public function __construct($data, $options)
           {
-            parent::__construct(app()['files'], app()['config']['view.compiled']);
+            parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
             $this->data = $data;
           }
           public function compile($path)
@@ -54,16 +54,20 @@ final class Compilers
       return $core;
     }  
 
-    return $core->file(\HQ::basePath('bd/scss/'.strtr($file, '.', '/').'.scss'), $data);
+    return $core->file(\HQ::basePath('bd/scss/'.strtr($file, '.', '/').'.scss'), $data, $options);
   }
 
   //
-  public static function markdown($file = false, $data = [])
+  public static function markdown($file = false, $data = [], $options = [])
   {
     $core = new class {
-      public function file($file, $data = [])
+      public function file($file, $data = [], $options = [])
       {
-        $compiler = new class(app()['files'], app()['config']['view.compiled']) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class(
+          app()['files'],
+          app()['config']['view.compiled'],
+          shouldCache: !isset($options['force_compile']),
+        ) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
           public function compile($path)
           {
@@ -145,7 +149,7 @@ final class Compilers
 
         $data = array_merge(json_decode($frontmatter, true), $data);
         $m = new \Mustache();
-        return $m->render($body, $data);
+        return $m->render($body, $data, $options);
       }
     };
 
