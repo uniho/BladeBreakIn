@@ -12,7 +12,7 @@ Introducing BladeBreakIn, a web-making system designed for web coders.
 
 BladeBreakIn is built on [Laravel](https://laravel.com/) and focuses on `S+E+L+F` development—Simple, Easy, Light, and Fast.
  
-Laravel, a highly popular web application framework, boasts expressive, elegant syntax. In particular, the Blade Templating Engine is unparalleled, liberating web coders from numerous issues and the black box of classical code.
+Laravel, a highly popular web application framework, boasts expressive, elegant syntax. In particular, the [Blade Templating Engine](https://laravel.com/docs/master/blade) is unparalleled, liberating web coders from numerous issues and the black box of classical code.
 
 ## 🎼 Get started
 
@@ -40,7 +40,8 @@ Laravel, a highly popular web application framework, boasts expressive, elegant 
 
 ## 👶 First steps
 
-See sample codes put in `/bd/views/sample` and `/bd/scss/sample` directories.
+See sample codes put in `/bd/views/sample`, `/bd/scss/sample`, and `/bd/markdowns/sample` directories.
+As you can see, these are using Blade Template, SCSS, and Markdown.
 
 Let's make your `/bd/views/index.blade.php`.
 
@@ -64,7 +65,7 @@ Afterward, you can proceed to write the routing and other necessary procedures f
 
 For instance, to display `/views/sample/test.blade.php` when `https://your-uri/test/` is accessed from a browser, you can configure the appropriate routing,
 
-``` on.php
+``` php: on.php
 
   public static function onWeb($router)
   {
@@ -79,7 +80,7 @@ Laravel's routing system offers a variety of functions. For detailed information
 
 ## 🚀 Debug Mode
 
-``` on.php
+``` php: on.php
 
   public static function onBoot()
   {
@@ -92,7 +93,7 @@ Access `https://your-uri/debugbar.php?secret=your secret key`.
 
 Or, 
 
-``` on.php
+``` php: on.php
 
   public static function onBoot()
   {
