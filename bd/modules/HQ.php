@@ -146,12 +146,6 @@ final class HQ
       $consts = $refClass->getConstants();
       return $consts[substr($name, 5)] ?? null;
     }
-
-    if (substr($name, 0, 5) === 'SSS::') {
-      $refClass = new ReflectionClass(\SSS::class);
-      $consts = $refClass->getConstants();
-      return $consts[substr($name, 5)] ?? null;
-    }
   }
 
   public static function setenv($name, $val)
@@ -167,8 +161,10 @@ final class HQ
   public static function setDebugMode(bool $mode)
   {
     if ($mode) {
+      if (self::getDebugMode()) return;
       file_put_contents(self::getenv('CCC::STORAGE_FILE_DEBUG'), '1');
     } else {
+      if (!self::getDebugMode()) return;
       @unlink(self::getenv('CCC::STORAGE_FILE_DEBUG'));
     }
   }
@@ -243,6 +239,15 @@ final class HQ
   public static function basePath($path = '')
   {
     return __BASE_DIR__.'/'.rtrim($path, '\/');
+  }
+
+  public static function getConfigFile(): string
+  {
+    $file = __DIR__.'/../config.php';
+    if (is_file($file)) {
+      return $file;
+    } 
+    return __DIR__.'/../config.sample.php';
   }
 
   private static function events_exists(): bool

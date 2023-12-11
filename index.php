@@ -25,7 +25,40 @@ if (1) {
   $app = require_once 'bd/laravel/bootstrap/app.php';
   $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
   $request = \Illuminate\Http\Request::capture();
-  $response = $kernel->handle($request)->send();
+  $response = $kernel->handle($request);
+
+  $configFile = app()->getCachedConfigPath();
+  $configFileCustom = \HQ::getConfigFile();
+  if (!is_file($configFile) || filemtime($configFile) !== filemtime($configFileCustom)) {
+    
+    require($configFileCustom); // for Error Check
+
+    if (!is_file($cfgFile = \HQ::getenv('CCC::STORAGE_FILE_CFG_APP'))) {
+      $key = base64_encode(Illuminate\Support\Str::random(32));
+      $cfgBody = "<?php return 'base64:$key';";
+      @file_put_contents($cfgFile, $cfgBody);
+    }
+  
+    \Artisan::call('config:cache', []);
+    \File::move($configFile, \File::dirname($configFile).'/config0.php');
+    \File::put($configFile, "<?php return array_replace_recursive(require(__DIR__.'/config0.php'), require(__DIR__.'/config1.php'), [
+      'app' => [
+        'debug' => is_file(\HQ::getenv('CCC::STORAGE_FILE_DEBUG')) || \HQ::getenv('debug'),
+        'key' => require(\HQ::getenv('CCC::STORAGE_FILE_CFG_APP')),
+      ],
+    ]);");
+    \touch($configFile, filemtime($configFileCustom));          
+    \File::copy($configFileCustom, \File::dirname($configFile).'/config1.php');
+
+    $path = 'index.php';
+    if ($request->query()) {
+      $path .= '?'.Arr::query($request->query());
+    }
+    header("Location: $path");
+    exit(0);
+  }
+
+  $response = $response->send();
   $kernel->terminate($request, $response);
 }
 
