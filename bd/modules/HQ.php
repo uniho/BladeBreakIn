@@ -6,49 +6,49 @@ final class HQ
 
   public static function onStart()
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onStart')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onStart')) {
       \HQ\On::onStart();
     }
   }
 
   public static function onBoot()
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onBoot')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onBoot')) {
       \HQ\On::onBoot();
     }
   }
 
   public static function onSchedule($schedule)
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onSchedule')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onSchedule')) {
       \HQ\On::onSchedule($schedule);
     }
   }
 
   public static function onCommands()
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onCommands')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onCommands')) {
       \HQ\On::onCommands();
     }
   }
 
   public static function onWeb($router)
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onWeb')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onWeb')) {
       \HQ\On::onWeb($router);
     }
   }
 
   public static function onWebNoCsrf($router)
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onWebNoCsrf')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onWebNoCsrf')) {
       \HQ\On::onWebNoCsrf($router);
     }
   }
 
   public static function onApi($router)
   {
-    if (self::events_exists() && method_exists(\HQ\On::class, 'onApi')) {
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onApi')) {
       \HQ\On::onApi($router);
     }
   }
@@ -250,7 +250,7 @@ final class HQ
     return __DIR__.'/../config.sample.php';
   }
 
-  private static function events_exists(): bool
+  private static function on_exists(): bool
   {
     if (!class_exists('\HQ\On::class', false)) {
       $file = __DIR__.'/../on.php';
