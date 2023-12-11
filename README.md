@@ -95,7 +95,7 @@ Or,
 
 ``` php: on.php
 
-  public static function onBoot()
+  public static function onStart()
   {
     \HQ::setDebugMode(true);
   } 
