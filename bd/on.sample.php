@@ -13,6 +13,7 @@ class On
   // Called from index.php
   public static function onStart()
   {
+    \HQ::setDebugMode(false);
   } 
   
   // Called from App\Providers\AppServiceProvider::boot()
@@ -21,7 +22,6 @@ class On
     \HQ::setenv('CCC::APP_NAME', 'Test App!');
     \Log::debug(\HQ::getenv('CCC::APP_NAME') . ' boot!');
 
-    // \HQ::setDebugMode(true);
     \HQ::setDebugbarPageSecret(false);
 
     \HQ::setMaintenanceMode(0);
@@ -32,14 +32,6 @@ class On
 
     // ここではもう request() が使えます。
     \Log::debug(request()->query("test"));
-
-    // メール送信の設定例
-    \HQ::setenv('SSS::MAIL_FROM_ADDRESS', 'you@your-domain');
-    \HQ::setenv('SSS::MAIL_SMTP_HOST', 'your smtp domain');
-    \HQ::setenv('SSS::MAIL_SMTP_PORT', 587);
-    \HQ::setenv('SSS::MAIL_SMTP_ENCRYPTION', 'tls');
-    \HQ::setenv('SSS::MAIL_SMTP_USERNAME', 'your smtp user');
-    \HQ::setenv('SSS::MAIL_SMTP_PASSWORD', 'your smtp pass');
   } 
   
   // Called from App\Console\Kernel::schedule()
