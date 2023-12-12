@@ -50,11 +50,7 @@ if (1) {
     \touch($configFile, filemtime($configFileCustom));          
     \File::copy($configFileCustom, \File::dirname($configFile).'/config1.php');
 
-    $path = 'index.php';
-    if ($request->query()) {
-      $path .= '?'.Arr::query($request->query());
-    }
-    header("Location: $path");
+    header("Location: {$request->fullUrl()}");
     exit(0);
   }
 
