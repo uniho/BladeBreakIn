@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite864fa2e6460af56f8735044c61b1761
+class ComposerStaticInita0b2edc56d9164e6beff8f7a8b825e8b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -1717,6 +1717,7 @@ class ComposerStaticInite864fa2e6460af56f8735044c61b1761
         'Illuminate\\Bus\\ChainedBatch' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/ChainedBatch.php',
         'Illuminate\\Bus\\DatabaseBatchRepository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/DatabaseBatchRepository.php',
         'Illuminate\\Bus\\Dispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/Dispatcher.php',
+        'Illuminate\\Bus\\DynamoBatchRepository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/DynamoBatchRepository.php',
         'Illuminate\\Bus\\Events\\BatchDispatched' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/Events/BatchDispatched.php',
         'Illuminate\\Bus\\PendingBatch' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/PendingBatch.php',
         'Illuminate\\Bus\\PrunableBatchRepository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Bus/PrunableBatchRepository.php',
@@ -3396,6 +3397,7 @@ class ComposerStaticInite864fa2e6460af56f8735044c61b1761
         'Mockery\\Matcher\\IsEqual' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/IsEqual.php',
         'Mockery\\Matcher\\IsSame' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/IsSame.php',
         'Mockery\\Matcher\\MatcherAbstract' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/MatcherAbstract.php',
+        'Mockery\\Matcher\\MatcherInterface' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/MatcherInterface.php',
         'Mockery\\Matcher\\MultiArgumentClosure' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/MultiArgumentClosure.php',
         'Mockery\\Matcher\\MustBe' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/MustBe.php',
         'Mockery\\Matcher\\NoArgs' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/NoArgs.php',
@@ -6626,9 +6628,9 @@ class ComposerStaticInite864fa2e6460af56f8735044c61b1761
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite864fa2e6460af56f8735044c61b1761::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite864fa2e6460af56f8735044c61b1761::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite864fa2e6460af56f8735044c61b1761::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita0b2edc56d9164e6beff8f7a8b825e8b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita0b2edc56d9164e6beff8f7a8b825e8b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita0b2edc56d9164e6beff8f7a8b825e8b::$classMap;
 
         }, null, ClassLoader::class);
     }
