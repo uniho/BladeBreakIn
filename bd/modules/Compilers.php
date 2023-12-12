@@ -8,13 +8,15 @@ final class Compilers
     $core = new class {
       public function file($file, $data = [], $options = [])
       {
-        $compiler = new class($data, $options) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class($data, $options, self::class) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
           private $data;
-          public function __construct($data, $options)
+          private $core;
+          public function __construct($data, $options, $core)
           {
             parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
             $this->data = $data;
+            $this->core = $core;
           }
           public function compile($path)
           {
@@ -25,7 +27,7 @@ final class Compilers
                 return null;
               }
 
-              $path = $this->getFullName($path);
+              $path = $this->core::getFullName($path);
               if (!file_exists($path)) {
                 return null;
               }
@@ -49,12 +51,12 @@ final class Compilers
         return $engine->get($file);
       }
 
-      public function exists($name)
+      public static function exists($name)
       {
-        return is_file($this->getFullName($name));
+        return is_file(self::getFullName($name));
       }
 
-      public function getFullName($name)
+      public static function getFullName($name)
       {
         return \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($name, '.', '/').'.scss';
       }
@@ -162,12 +164,12 @@ final class Compilers
         return $m->render($body, $data, $options);
       }
 
-      public function exists($name)
+      public static function exists($name)
       {
-        return is_file($this->getFullName($name));
+        return is_file(self::getFullName($name));
       }
 
-      public function getFullName($name)
+      public static function getFullName($name)
       {
         return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.md';
       }
