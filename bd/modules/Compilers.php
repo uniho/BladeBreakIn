@@ -169,7 +169,7 @@ final class Compilers
 
       public function getFullName($name)
       {
-        return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.scss';
+        return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.md';
       }
     };
 
