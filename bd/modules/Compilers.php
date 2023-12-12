@@ -8,7 +8,7 @@ final class Compilers
     $core = new class {
       public function file($file, $data = [], $options = [])
       {
-        $compiler = new class($data, $options, self::class) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class($data, $options, $this) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
           private $data;
           private $core;
@@ -27,7 +27,7 @@ final class Compilers
                 return null;
               }
 
-              $path = $this->core::getFullName($path);
+              $path = $this->core->getFullName($path);
               if (!file_exists($path)) {
                 return null;
               }
@@ -51,12 +51,12 @@ final class Compilers
         return $engine->get($file);
       }
 
-      public static function exists($name)
+      public function exists($name)
       {
-        return is_file(self::getFullName($name));
+        return is_file($this->getFullName($name));
       }
 
-      public static function getFullName($name)
+      public function getFullName($name)
       {
         return \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($name, '.', '/').'.scss';
       }
@@ -164,12 +164,12 @@ final class Compilers
         return $m->render($body, $data, $options);
       }
 
-      public static function exists($name)
+      public function exists($name)
       {
-        return is_file(self::getFullName($name));
+        return is_file($this->getFullName($name));
       }
 
-      public static function getFullName($name)
+      public function getFullName($name)
       {
         return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.md';
       }
