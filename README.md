@@ -117,7 +117,7 @@ For instance, to display `/views/sample/test.blade.php` when `https://your-uri/t
 
 Laravel's routing system offers a variety of functions. For detailed information and examples, refer to [Laravel's Routing Page](https://laravel.com/docs/master/routing).
 
-## 🚀 Debug Mode
+## 🐞 Debug Mode
 
 ``` php: on.php
 
@@ -143,11 +143,11 @@ Or,
 
 However, it's crucial not to overlook security considerations. In the last example, it's worth noting that allowing all web visitors to see the debug results could pose a security risk.
 
-## 🚀 Maintenance Mode
+## 🔧 Maintenance Mode
 
 Coming soon...
 
-## 🚀 Update BladeBreakIn
+## ✔ Update BladeBreakIn
 
 Making updates is also a straightforward process.
 
