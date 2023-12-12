@@ -25,7 +25,7 @@ final class Compilers
                 return null;
               }
 
-              $path = \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($path, '.', '/').'.scss';
+              $path = $this->getFullName($path);
               if (!file_exists($path)) {
                 return null;
               }
@@ -177,6 +177,6 @@ final class Compilers
       return $core;
     }  
 
-    return $core->file($core->getFullName($name), $data);
+    return $core->file($core->getFullName($name), $data, $options);
   }
 }
