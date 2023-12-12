@@ -3,7 +3,7 @@
 final class Compilers
 {
   //
-  public static function scss($file = false, $data = [], $options = [])
+  public static function scss($name = false, $data = [], $options = [])
   {
     $core = new class {
       public function file($file, $data = [], $options = [])
@@ -48,17 +48,27 @@ final class Compilers
         $engine = new \Illuminate\View\Engines\CompilerEngine($compiler, app()['files']);
         return $engine->get($file);
       }
+
+      public function exists($name)
+      {
+        return is_file($this->getFullName($name));
+      }
+
+      public function getFullName($name)
+      {
+        return \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($name, '.', '/').'.scss';
+      }
     };
 
-    if (!$file) {
+    if (!$name) {
       return $core;
     }  
 
-    return $core->file(\HQ::getenv('CCC::SCSS_PATH').'/'.strtr($file, '.', '/').'.scss', $data, $options);
+    return $core->file($core->getFullName($name), $data, $options);
   }
 
   //
-  public static function markdown($file = false, $data = [], $options = [])
+  public static function markdown($name = false, $data = [], $options = [])
   {
     $core = new class {
       public function file($file, $data = [], $options = [])
@@ -151,12 +161,22 @@ final class Compilers
         $m = new \Mustache();
         return $m->render($body, $data, $options);
       }
+
+      public function exists($name)
+      {
+        return is_file($this->getFullName($name));
+      }
+
+      public function getFullName($name)
+      {
+        return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.scss';
+      }
     };
 
-    if (!$file) {
+    if (!$name) {
       return $core;
     }  
 
-    return $core->file(\HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($file, '.', '/').'.md', $data);
+    return $core->file($core->getFullName($name), $data);
   }
 }
