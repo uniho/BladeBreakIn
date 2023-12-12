@@ -67,15 +67,15 @@ final class HQ
       return view($name);
     }
 
-    if ($name = $request->query('css_route')) {
-      abort_unless(\Compilers::scss()->exists($name), 404, "CSS [{$name}] not found.");
-      $css = \Compilers::scss($request->query('css_route'), [],
-        ['force_compile' => $request->query('force_compile')]);
-      $response = Response::make($css, 200);
-      return $response->header('Content-Type', 'text/css; charset=utf-8');
-    }
-
     if ($request->method() == 'GET') {
+
+      if ($name = $request->query('css_route')) {
+        abort_unless(\Compilers::scss()->exists($name), 404, "CSS [{$name}] not found.");
+        $css = \Compilers::scss($request->query('css_route'), [],
+          ['force_compile' => $request->query('force_compile')]);
+        $response = Response::make($css, 200);
+        return $response->header('Content-Type', 'text/css; charset=utf-8');
+      }
 
       if (basename(url()->current()) == 'debugbar.php') {
         $user = \Auth::user();
