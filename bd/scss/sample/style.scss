@@ -4,7 +4,7 @@
 div.wrapper {
   margin: $margin;
 
-  div {
+  & > div {
     color: $color;
     margin-bottom: 2rem;
 
