@@ -40,8 +40,38 @@ Laravel, a highly popular web application framework, boasts expressive, elegant 
 
 ## 👶 First steps
 
+### Sample codes
+
 See sample codes put in `/bd/views/sample`, `/bd/scss/sample`, and `/bd/markdowns/sample` directories.
 As you can see, these are using Blade Template, SCSS, and Markdown.
+
+#### SCSS
+
+You can see a sample of using SCSS in `/bd/views/sample/index.blade.php`:
+
+``` html
+  <link rel="stylesheet" href="?css_route=sample.style">
+```
+
+Here, `css_route=sample.style` means loading `/bd/scss/sample/style.scss` after it has been compiled into regular CSS.
+The result is cached, similar to Blade Templates.
+
+
+#### Markdown
+
+You can see a sample of using Markdown with Mustache in `/bd/views/sample/index.blade.php`:
+
+``` html
+  {!! Compilers::markdown('sample.test', ['test' => 2]) !!}
+```
+
+Here, `sample.test` means loading `/bd/markdowns/sample/test.md` after it has been compiled into HTML.
+The result is cached, similar to Blade Templates.
+
+And `['test' => 2]` means providing the hash to [Mustache Template](https://mustache.github.io/).
+
+
+### Start Your Coding
 
 Let's make your `/bd/views/index.blade.php`.
 
@@ -59,7 +89,16 @@ The `/storage` directory designated for publicly uploaded files, and the framewo
 
 ## 🚀 Next steps
 
-Rename `/bd/on.sample.php` to `/bd/on.php`.
+### Settings
+
+Copy `/bd/config.sample.php` to `/bd/config.php`.
+
+Afterward, you can modify the environment settings.
+
+
+### Routings
+
+Copy `/bd/on.sample.php` to `/bd/on.php`.
 
 Afterward, you can proceed to write the routing and other necessary procedures for the web service.
 
