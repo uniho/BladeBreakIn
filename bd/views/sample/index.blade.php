@@ -2,17 +2,17 @@
   $INTERVAL = 10;
 
   if (request()->isMethod('post')) {
-    if (!\Unsta\FloodControl::isAllowed(request()->url().'::message', 1, $INTERVAL)) {
-      $query = request()->query();
-      $query['error'] = "You can only use it once every $INTERVAL seconds.";
-      header('Location: '.request()->url().'?'.Arr::query($query));
-      return;
-    }
-
     $message = request()->input('message');
     if (!$message) {
       $query = request()->query();
       $query['error'] = 'No message'; 
+      header('Location: '.request()->url().'?'.Arr::query($query));
+      return;
+    }
+
+    if (!\Unsta\FloodControl::isAllowed(request()->url().'::message', 1, $INTERVAL)) {
+      $query = request()->query();
+      $query['error'] = "You can only use it once every $INTERVAL seconds.";
       header('Location: '.request()->url().'?'.Arr::query($query));
       return;
     }
