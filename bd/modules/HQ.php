@@ -55,24 +55,26 @@ final class HQ
 
   public static function webOrigin($request)
   {
-    if ($request->query('rest_route')) {
+    if ($request->has('rest_route')) {
       require_once __DIR__.'/../rest/cmds/autoload.php';
       require_once __DIR__.'/../rest/RestApi.php';
       $request->headers->set('Accept', 'application/json');
       return \RestApi\Procedures::handle($request);
     }
 
-    if ($name = $request->query('view_route')) {
+    if ($request->has('view_route')) {
+      $name = $request->query('view_route');
       abort_unless(view()->exists($name), 404, "View [{$name}] not found.");
       return view($name);
     }
 
     if ($request->method() == 'GET') {
 
-      if ($name = $request->query('css_route')) {
+      if ($request->has('css_route')) {
+        $name = $request->query('css_route');
         abort_unless(\Compilers::scss()->exists($name), 404, "CSS [{$name}] not found.");
         $css = \Compilers::scss($name, [],
-          ['force_compile' => $request->query('force_compile')]);
+          ['force_compile' => $request->has('force_compile')]);
         $response = Response::make($css, 200);
         return $response->header('Content-Type', 'text/css; charset=utf-8');
       }
@@ -80,7 +82,7 @@ final class HQ
       if (basename(url()->current()) == 'debugbar.php') {
         $user = \Auth::user();
         if ($user && method_exists($user, 'isAdmin') && $user->isAdmin()) {
-          if ($request->query('phpinfo')) {
+          if ($request->has('phpinfo')) {
             phpinfo();
             exit();
           }
@@ -96,7 +98,7 @@ final class HQ
 
         $secret = self::getDebugbarPageSecret();
         if ($secret && $request->query('secret') === $secret) {
-          if ($request->query('phpinfo')) {
+          if ($request->has('phpinfo')) {
             phpinfo();
             exit();
           }
