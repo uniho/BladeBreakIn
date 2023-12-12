@@ -114,29 +114,26 @@ final class HQ
         exit();
       }
 
-      if (view()->exists('index')) {
-        return view('index');
-      }
-
-      if (is_file('./fd/index.html')) {
-        $path = 'fd/';
-        if ($request->query()) {
-          $path .= '?'.Arr::query($request->query());
-        }
-        header("Location: $path");
-        exit();
-      }
-
-      if (view()->exists('sample.index')) {
-        return view('sample.index');
-      }
-
-      return \App::abort(404);
     }
 
-    if ($request->method() == 'POST') {
-      return App::abort(403);
+    if (view()->exists('index')) {
+      return view('index');
     }
+
+    if (is_file('./fd/index.html')) {
+      $path = 'fd/';
+      if ($request->query()) {
+        $path .= '?'.Arr::query($request->query());
+      }
+      header("Location: $path");
+      exit();
+    }
+
+    if (view()->exists('sample.index')) {
+      return view('sample.index');
+    }
+
+    return \App::abort(404);
   }
 
   public static function getenv($name)
