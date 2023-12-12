@@ -62,11 +62,13 @@ final class HQ
       return \RestApi\Procedures::handle($request);
     }
 
-    if ($request->query('view_route')) {
-      return view($request->query('view_route'));
+    if ($name = $request->query('view_route')) {
+      abort_unless(view()->exists($name), 404, "View [{$name}] not found.");
+      return view($name);
     }
 
-    if ($request->query('css_route')) {
+    if ($name = $request->query('css_route')) {
+      abort_unless(\Compilers::scss()->exists($name), 404, "CSS [{$name}] not found.");
       $css = \Compilers::scss($request->query('css_route'), [],
         ['force_compile' => $request->query('force_compile')]);
       $response = Response::make($css, 200);
