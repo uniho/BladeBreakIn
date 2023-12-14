@@ -65,7 +65,7 @@ final class HQ
     if ($request->has('view_route')) {
       $name = $request->query('view_route');
       abort_unless(view()->exists($name), 404, "View [{$name}] not found.");
-      return view($name);
+      return view($name); // $data dosen't need.
     }
 
     if ($request->method() == 'GET') {
@@ -73,19 +73,28 @@ final class HQ
       if ($request->has('css_route')) {
         $name = $request->query('css_route');
         abort_unless(\Compilers::scss()->exists($name), 404, "CSS [{$name}] not found.");
-        $css = \Compilers::scss($name, [],
-          ['force_compile' => $request->has('force_compile')]);
-        $response = Response::make($css, 200);
+        $contents = \Compilers::scss($name, [], ['force_compile' => $request->has('force_compile')]);
+        $response = Response::make($contents, 200);
         return $response->header('Content-Type', 'text/css; charset=utf-8');
+      }
+
+      if ($request->has('js_route')) {
+        $name = $request->query('js_route');
+        abort_unless(\Compilers::js()->exists($name), 404, "JS [{$name}] not found.");
+        $contents = \Compilers::js($name, [], ['force_compile' => $request->has('force_compile')]);
+        $response = Response::make($contents, 200);
+        return $response->header('Content-Type', 'application/javascript; charset=utf-8');
       }
 
       if (basename(url()->current()) == 'debugbar.php') {
         $user = \Auth::user();
         if ($user && method_exists($user, 'isAdmin') && $user->isAdmin()) {
           if ($request->has('phpinfo')) {
+            \Debugbar::disable();
             phpinfo();
             exit();
           }
+          \Debugbar::enable();
           return view('welcome');
         }
 
@@ -99,9 +108,11 @@ final class HQ
         $secret = self::getDebugbarPageSecret();
         if ($secret && $request->query('secret') === $secret) {
           if ($request->has('phpinfo')) {
+            \Debugbar::disable();
             phpinfo();
             exit();
           }
+          \Debugbar::enable();
           return view('welcome');
         }
 
