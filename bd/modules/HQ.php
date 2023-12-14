@@ -37,6 +37,10 @@ final class HQ
     if (self::on_exists() && method_exists(\HQ\On::class, 'onWeb')) {
       \HQ\On::onWeb($router);
     }
+
+    if (basename(url()->current()) == 'debugbar.php' && self::allowDebugbar()) {
+      debugbar()->enable();
+    }
   }
 
   public static function onWebNoCsrf($router)
@@ -87,36 +91,13 @@ final class HQ
       }
 
       if (basename(url()->current()) == 'debugbar.php') {
-        $user = \Auth::user();
-        if ($user && method_exists($user, 'isAdmin') && $user->isAdmin()) {
+        if (self::allowDebugbar()) {
           if ($request->has('phpinfo')) {
-            \Debugbar::disable();
             phpinfo();
             exit();
           }
-          \Debugbar::enable();
           return view('welcome');
         }
-
-        // Rate Limit
-        if (!\Unsta\FloodControl::isAllowed('browse debugbar.php', 20, 60)) {
-          \Debugbar::disable();
-          return App::abort(429);
-        }
-        \Unsta\FloodControl::register('browse debugbar.php', 60);
-
-        $secret = self::getDebugbarPageSecret();
-        if ($secret && $request->query('secret') === $secret) {
-          if ($request->has('phpinfo')) {
-            \Debugbar::disable();
-            phpinfo();
-            exit();
-          }
-          \Debugbar::enable();
-          return view('welcome');
-        }
-
-        \Debugbar::disable();
         return App::abort(403);
       }
 
@@ -246,6 +227,28 @@ final class HQ
       return;
     }
     \CachedConfig::set('$$__DEBUGBAR_PAGE_SECRET', $secret);
+  }
+
+  public static function allowDebugbar() {
+    if (basename(url()->current()) == 'debugbar.php') {
+      $user = \Auth::user();
+      if ($user && method_exists($user, 'isAdmin') && $user->isAdmin()) {
+        return true;
+      }
+
+      // Rate Limit
+      if (!\Unsta\FloodControl::isAllowed('browse debugbar.php', 20, 60)) {
+        return false;
+      }
+      \Unsta\FloodControl::register('browse debugbar.php', 60);
+
+      $secret = self::getDebugbarPageSecret();
+      if ($secret && request()->query('secret') === $secret) {
+        return true;
+      }
+
+      return false;
+    }
   }
 
   public static function basePath($path = '')
