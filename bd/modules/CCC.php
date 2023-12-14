@@ -17,6 +17,7 @@ final class CCC
   const VIEWS_PATH = __BASE_DIR__ . '/bd/views';
   const SCSS_PATH = __BASE_DIR__ . '/bd/scss';
   const MARKDOWNS_PATH = __BASE_DIR__ . '/bd/markdowns';
+  const JS_PATH = __BASE_DIR__ . '/bd/js';
 
   const PHP_CLI = 'php';
 

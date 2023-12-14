@@ -1,21 +1,20 @@
 <?php
 
+//
 final class Compilers
 {
   //
   public static function scss($name = false, $data = [], $options = [])
   {
-    $core = new class {
+    $core = new class extends _CompilerCore {
       public function file($file, $data = [], $options = [])
       {
-        $compiler = new class($data, $options, $this) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class($data, $options, $this) extends _Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
-          private $data;
           private $core;
           public function __construct($data, $options, $core)
           {
-            parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
-            $this->data = $data;
+            parent::__construct($data, $options);
             $this->core = $core;
           }
           public function compile($path)
@@ -29,6 +28,7 @@ final class Compilers
 
               $path = $this->core->getFullName($path);
               if (!file_exists($path)) {
+                dd(1);
                 return null;
               }
 
@@ -51,11 +51,6 @@ final class Compilers
         return $engine->get($file);
       }
 
-      public function exists($name)
-      {
-        return is_file($this->getFullName($name));
-      }
-
       public function getFullName($name)
       {
         return \HQ::getenv('CCC::SCSS_PATH').'/'.strtr($name, '.', '/').'.scss';
@@ -72,14 +67,10 @@ final class Compilers
   //
   public static function markdown($name = false, $data = [], $options = [])
   {
-    $core = new class {
+    $core = new class extends _CompilerCore {
       public function file($file, $data = [], $options = [])
       {
-        $compiler = new class(
-          app()['files'],
-          app()['config']['view.compiled'],
-          shouldCache: !isset($options['force_compile']),
-        ) extends \Illuminate\View\Compilers\Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        $compiler = new class($data, $options) extends _Compiler implements \Illuminate\View\Compilers\CompilerInterface
         {
           public function compile($path)
           {
@@ -164,11 +155,6 @@ final class Compilers
         return $m->render($body, $data, $options);
       }
 
-      public function exists($name)
-      {
-        return is_file($this->getFullName($name));
-      }
-
       public function getFullName($name)
       {
         return \HQ::getenv('CCC::MARKDOWNS_PATH').'/'.strtr($name, '.', '/').'.md';
@@ -181,4 +167,202 @@ final class Compilers
 
     return $core->file($core->getFullName($name), $data, $options);
   }
+
+  //
+  public static function js($name = false, $data = [], $options = [])
+  {
+    $core = new class extends _CompilerCore {
+      public function file($file, $data = [], $options = [])
+      {
+        $compiler = new class($data, $options) extends _Compiler implements \Illuminate\View\Compilers\CompilerInterface
+        {
+          const TAG_JSX = [ // JSX として取り扱うタグ関数の名前 
+            'html',
+          ]; 
+
+          const TAG_CSS = [ // CSS として取り扱うタグ関数の名前
+            'css',
+            'keyframes',
+            'styled()',
+          ];
+
+          const SEPARATOR = "\x89sep\x89";
+          const CR = "\x89cr\x89";
+
+          public function compile($path)
+          {
+            $options = [
+              'sourceType' => \Peast\Peast::SOURCE_TYPE_MODULE,
+              // 'jsx' => true,
+            ];
+        
+            // AST generation
+            $ast = \Peast\Peast::latest(\File::get($path), $options)->parse();
+
+            // Tree Traversing
+            $traverser = new \Peast\Traverser;
+            $traverser->addFunction(function($node) {
+              $type = $node->getType();
+              
+              // タグ関数を探す
+              if ($type === 'TaggedTemplateExpression') {
+                
+                $tagName = false;
+                $t = $node->gettag();
+                if (method_exists($t, 'getname')) {
+                  $tagName = $t->getname();
+                } else {
+                  if (!method_exists($t, 'getCallee')) return;
+                  $calee = $t->getCallee();
+                  if (method_exists($calee, 'getName')) {
+                    $tagName = $calee->getName() . '()';
+                  } else {
+                    if (!method_exists($calee, 'getProperty')) return;
+                    $property = $calee->getProperty();
+                    if (!method_exists($property, 'getName')) return;
+                    $tagName = $property->getName() . '()';
+                  }
+                }
+
+                // JSX の圧縮
+                if (in_array($tagName, self::TAG_JSX)) {
+                  // テンプレートリテラルを取得
+                  // ${} 部分で区切られた配列となっている
+                  $src = '';
+                  $sls = $node->getquasi()->getquasis(); // 文字列部分
+                  foreach ($sls as $sl) {
+                    $src .= $sl->getrawValue() . self::SEPARATOR;
+                  }
+                  $src = $this->minimize_jsx($src);
+                  $arr = explode(self::SEPARATOR, $src);
+                  foreach ($sls as $key => $sl) {
+                    $sl->setrawValue($arr[$key]);
+                  }
+                }
+
+                // CSS の圧縮
+                if (in_array($tagName, self::TAG_CSS)) {
+                  // テンプレートリテラルを取得
+                  // ${} 部分で区切られた配列となっている
+                  $sls = $node->getquasi()->getquasis(); // 文字列部分
+                  foreach ($sls as $sl) {
+                    $src = $sl->getrawValue();
+                    $src = $this->minimize_css($src);
+                    $sl->setrawValue($src);
+                  }
+                }
+              } 
+            });
+            $traverser->traverse($ast);
+            
+            // Render
+            $renderer = new \Peast\Renderer;
+            $renderer->setFormatter(
+              isset($this->options['pretty_print']) ? new \Peast\Formatter\PrettyPrint : new \Peast\Formatter\Compact
+            );
+            $contents = $renderer->render($ast);
+
+            $this->ensureCompiledDirectoryExists(
+              $compiledPath = $this->getCompiledPath($path)
+            );
+
+            $this->files->put($compiledPath, $contents);
+          }
+          
+          private function minimize_jsx($buffer) {
+            $replaces = [];
+
+            // <style>
+            if (preg_match_all('[<style(?: [^>]+)?>(.+?)</style>]is', $buffer, $matches, PREG_SET_ORDER)) {
+              foreach ($matches as $match) {
+                $replaces[$match[1]] = minimize_css($match[1]);
+              }
+            }
+
+            // Hold "\n" when tas is <pre> or <textarea>.
+            if (preg_match_all('[<(?:pre|textarea)(?: [^>]+)?>(.+?)</(?:pre|textarea)>]is', $buffer, $matches, PREG_SET_ORDER)) {
+              foreach ($matches as $match) {
+                $replaces[$match[1]] = str_replace("\n", self::CR, $match[1]);
+              }
+            }
+
+            if (!empty($replaces)) {
+              $buffer = str_replace(array_keys($replaces), array_values($replaces), $buffer);
+            }
+
+            $replaces = [];
+
+            // Remove comments
+            $replaces['[<!--(?![<>\[\]]).*?(?<![<>\[\]])-->]s'] = '';
+
+            // Remove spaces after newline characters, and leading and trailing whitespace.
+            $replaces['[\n\s*(\S)|\A\s+|\s+\z]s'] = '${1}';
+
+            $buffer = preg_replace(array_keys($replaces), array_values($replaces), $buffer);
+
+            $buffer = str_replace(self::CR, "\n", $buffer);
+
+            return $buffer;
+          }
+
+          private function minimize_css($buffer) {
+            // ※ reduced the processing intensity.
+            $search = array(
+              // remove comments
+              '/(\/\*!.*?\*\/|\"(?:(?!(?<!\\\)\").)*\"|\'(?:(?!(?<!\\\)\').)*\')|\/\*.*?\*\//s',
+              '/\/\/[^\r\n]+[\r\n]/s',
+              // shorten multiple whitespace sequences
+              '/\s+/s',
+            );
+            $replace = array(
+              '${1}',
+              '${1}',
+              ' ',
+            );
+            return preg_replace($search, $replace, $buffer);
+          }
+        };
+
+        $engine = new \Illuminate\View\Engines\CompilerEngine($compiler, app()['files']);
+        return $engine->get($file);
+      }
+
+      public function getFullName($name)
+      {
+        return \HQ::getenv('CCC::JS_PATH').'/'.strtr($name, '.', '/').'.js';
+      }
+    };
+
+    if (!$name) {
+      return $core;
+    }  
+
+    return $core->file($core->getFullName($name), $data, $options);
+  }
 }
+
+//
+abstract class _CompilerCore {
+  abstract public function file($file, $data = [], $options = []);
+
+  public function exists($name)
+  {
+    return is_file($this->getFullName($name));
+  }
+
+  abstract public function getFullName($name);
+}
+
+//
+class _Compiler extends \Illuminate\View\Compilers\Compiler
+{
+  protected $data;
+  protected $options;
+  public function __construct($data, $options)
+  {
+    parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
+    $this->data = $data;
+    $this->options = $options;
+  }
+}
+
