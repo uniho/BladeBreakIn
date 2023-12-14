@@ -13,7 +13,8 @@ class On
   // Called from index.php
   public static function onStart()
   {
-    \HQ::setDebugMode(false);
+    \HQ::setDebugMode(true);
+    \HQ::setDebugbarShowAlways(false);
   } 
   
   // Called from App\Providers\AppServiceProvider::boot()
@@ -59,6 +60,8 @@ class On
 
     // You can use $router->get() instead of \Router::get()
     \Route::get('test', function (Request $request) {
+      debugbar()->debug('test web route!');
+      \HQ::view(); // Collect debugbar's data      
       return $request->path();
     });
   }
