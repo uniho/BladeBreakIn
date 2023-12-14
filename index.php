@@ -46,6 +46,9 @@ if (1) {
         'debug' => is_file(\HQ::getenv('CCC::STORAGE_FILE_DEBUG')) || \HQ::getenv('debug'),
         'key' => require(\HQ::getenv('CCC::STORAGE_FILE_CFG_APP')),
       ],
+      'debugbar' => [
+        'inject' => \HQ::getDebugbarShowAlways() || \HQ::getenv('debug'),
+      ],  
     ]);");
     \touch($configFile, filemtime($configFileCustom));          
     \File::copy($configFileCustom, \File::dirname($configFile).'/config1.php');
