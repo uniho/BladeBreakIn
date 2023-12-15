@@ -14,7 +14,7 @@ class On
   public static function onStart()
   {
     \HQ::setDebugMode(true);
-    \HQ::setDebugbarShowAlways(false);
+    \HQ::setDebugbarShowAlways(false); // <====== For security, the default value is false!
   } 
   
   // Called from App\Providers\AppServiceProvider::boot()

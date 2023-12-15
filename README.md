@@ -137,6 +137,7 @@ Or,
   public static function onStart()
   {
     \HQ::setDebugMode(true);
+    \HQ::setDebugbarShowAlways(true); // <====== For security, the default value is false.
   } 
 
 ```
