@@ -8,8 +8,12 @@ export const main = async props => {
   root.render(React.createElement(Page, newProps));
 }
 
-//
+// htm is JSX-like syntax in plain JavaScript - no transpiler necessary.
+// https://github.com/developit/htm
 window.html = htm.bind(React.createElement);
+
+// Material is a framework for sleek, responsive web interfaces.
+// https://mui.com/
 window.MUI = MaterialUI;
 window.styled = MaterialUI.styled;
 window.css = MaterialUI.css;
@@ -22,3 +26,9 @@ window.Sx = {
   flex: MaterialUI.styled('div')({display:'flex'}),
   flexCol: MaterialUI.styled('div')({display:'flex', flexDirection:'column'}),
 };
+
+// clsx is a utility for constructing className strings conditionally.
+// https://github.com/lukeed/clsx
+//
+//   You can use `clsx` instead of `cx` for this purpose.
+//   https://emotion.sh/docs/@emotion/css#cx
