@@ -65,7 +65,7 @@ final class HQ
     if ($request->has('view_route')) {
       $name = $request->query('view_route');
       abort_unless(view()->exists($name), 404, "View [{$name}] not found.");
-      return self::view($name); // $data dosen't need.
+      return view($name); // $data dosen't need.
     }
 
     if ($request->method() == 'GET') {
@@ -105,7 +105,7 @@ final class HQ
     }
 
     if (view()->exists('index')) {
-      return self::view('index');
+      return view('index');
     }
 
     if (is_file('./fd/index.html')) {
@@ -118,7 +118,7 @@ final class HQ
     }
 
     if (view()->exists('sample.index')) {
-      return self::view('sample.index');
+      return view('sample.index');
     }
 
     return \App::abort(404);
@@ -140,21 +140,6 @@ final class HQ
   public static function setenv($name, $val)
   {
     self::$env[$name] = $val;
-  }
-
-  // view() with collecting debugbar's data... 
-  public static function view($name = false, $data = [])
-  {
-    if ($name) {
-      $contents = \view($name, $data);
-    }
-    if (config('app.debug')) {
-      debugbar()->collect();
-    }
-    if ($name) {
-      return $contents;
-    }
-    return view();
   }
 
   public static function getDebugMode(): bool
