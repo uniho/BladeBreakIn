@@ -309,13 +309,11 @@ final class Compilers
             // ※ reduced the processing intensity.
             $search = array(
               // remove comments
-              '/(\/\*!.*?\*\/|\"(?:(?!(?<!\\\)\").)*\"|\'(?:(?!(?<!\\\)\').)*\')|\/\*.*?\*\//s',
-              '/\/\/[^\r\n]+[\r\n]/s',
+              '/(\/\*!.*?\*\/|\"(?:(?!(?<!\\\)\").)*\"|\'(?:(?!(?<!\\\)\').)*\')|\/\*.*?\*\/|\/\/[^\r\n]+[\r\n]/s',
               // shorten multiple whitespace sequences
               '/\s+/s',
             );
             $replace = array(
-              '${1}',
               '${1}',
               ' ',
             );
