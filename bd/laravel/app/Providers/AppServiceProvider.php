@@ -34,7 +34,9 @@ class InjectDebugbarColector
     {
         $response = $next($request);
 
-        if (!config('debugbar.inject', true)) {
+        if (debugbar()->isEnabled() && !config('debugbar.inject', true)
+            && $request->segment(1) != config('debugbar.route_prefix'))
+        {
             debugbar()->collect();
         }
 
