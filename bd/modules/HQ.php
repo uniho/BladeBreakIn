@@ -94,6 +94,7 @@ final class HQ
           }
           return view('welcome');
         }
+        debugbar()->disable();
         return App::abort(403);
       }
 
