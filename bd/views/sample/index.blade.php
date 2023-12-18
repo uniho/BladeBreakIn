@@ -45,11 +45,11 @@
 @endphp
 
 <x-sample.html>
-  <x-slot name="title">
+  <x-slot:title>
     {{ HQ::getenv('CCC::APP_NAME') }} 
   </x-slot>  
 
-  <x-slot name="header">
+  <x-slot:header>
     <link rel="stylesheet" href="?css_route=sample.style">
     <style>
       .color-box {
