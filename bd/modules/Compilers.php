@@ -28,7 +28,6 @@ final class Compilers
 
               $path = $this->core->getFullName($path);
               if (!file_exists($path)) {
-                dd(1);
                 return null;
               }
 
