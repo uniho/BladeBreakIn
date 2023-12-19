@@ -212,6 +212,20 @@ final class HQ
     }
   }
 
+  public static function getDebugShowSource()
+  {
+    return isset(self::$env['debugShowSource']);
+  }
+
+  public static function setDebugShowSource($mode)
+  {
+    if (!$mode) {
+      unset(self::$env['debugShowSource']);
+      return;
+    }
+    self::$env['debugShowSource'] = true;
+  }
+
   public static function getDebugbarShowAlways()
   {
     return isset(self::$env['debugbarShowAlways']);

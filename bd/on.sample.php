@@ -14,6 +14,7 @@ class On
   public static function onStart()
   {
     \HQ::setDebugMode(true);
+    \HQ::setDebugShowSource(false); // <====== For security, the default value is false!
     \HQ::setDebugbarShowAlways(false); // <====== For security, the default value is false!
   } 
   
