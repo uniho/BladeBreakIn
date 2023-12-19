@@ -123,12 +123,12 @@ Laravel's routing system offers a variety of functions. For detailed information
 
   public static function onBoot()
   {
-    \HQ::setDebugbarPageSecret('your secret key');
+    \HQ::setDebugbarPageSecret('your-secret-key');
   } 
 
 ```
 
-Access `https://your-uri/debugbar.php?secret=your secret key`.
+Access `https://your-uri/debugbar.php?secret=your-secret-key`.
 
 Or, 
 
