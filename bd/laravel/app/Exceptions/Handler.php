@@ -27,4 +27,53 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // ※
+    protected function prepareResponse($request, Throwable $e)
+    {
+        if (\HQ::getDebugShowSource()) {
+            return parent::prepareResponse($request, $e);
+        }
+
+        // if (! $this->isHttpException($e) && config('app.debug')) {
+        //     return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e)->prepare($request);
+        // }
+
+        if (! $this->isHttpException($e)) {
+            $e = new \Symfony\Component\HttpKernel\Exception\HttpException(500, $e->getMessage(), $e);
+        }
+
+        return $this->toIlluminateResponse(
+            $this->renderHttpException($e), $e
+        )->prepare($request);
+    }
+
+    // ※
+    protected function renderHttpException($e)
+    {
+        if (\HQ::getDebugShowSource()) {
+            return parent::renderHttpException($e);
+        }
+
+        $this->registerErrorViewPaths();
+
+        if ($view = $this->getHttpExceptionView($e)) {
+            try {
+                return response()->view($view, [
+                    'errors' => new \Illuminate\Support\ViewErrorBag,
+                    'exception' => $e,
+                ], $e->getStatusCode(), $e->getHeaders());
+            } catch (Throwable $t) {
+                // config('app.debug') && throw $t;
+
+                $this->report($t);
+            }
+        }
+
+        return response()->view('errors::500', [
+          'errors' => new \Illuminate\Support\ViewErrorBag,
+          'exception' => $e,
+        ], $e->getStatusCode(), $e->getHeaders());
+        // return $this->convertExceptionToResponse($e);
+    }
 }
