@@ -15,7 +15,7 @@ final class Compilers
         {
           public function compile($path)
           {
-            $contents = $this->core->inline($this->files->get($path), $this->data);
+            $contents = $this->core->inline($this->files->get($path), $this->data, $this->options);
 
             $this->ensureCompiledDirectoryExists(
               $compiledPath = $this->getCompiledPath($path)
