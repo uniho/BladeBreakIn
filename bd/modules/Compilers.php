@@ -242,7 +242,8 @@ final class Compilers
 }
 
 //
-abstract class _CompilerCore {
+abstract class _CompilerCore
+{
   abstract public function file($file, $data = [], $options = []);
 
   public function exists($name)
@@ -256,16 +257,9 @@ abstract class _CompilerCore {
 //
 class _Compiler extends \Illuminate\View\Compilers\Compiler
 {
-  protected $core;
-  protected $data;
-  protected $options;
-
-  public function __construct($core, $data, $options)
+  public function __construct(protected $core, protected $data, protected $options)
   {
     parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
-    $this->core = $core;
-    $this->data = $data;
-    $this->options = $options;
   }
 }
 
@@ -360,7 +354,8 @@ final class JavaScriptMinify
     return $renderer->render($ast);
   }
   
-  private function minimize_jsx($buffer) {
+  private function minimize_jsx($buffer)
+  {
     $replaces = [];
 
     // <style>
@@ -396,7 +391,8 @@ final class JavaScriptMinify
     return $buffer;
   }
 
-  private function minimize_css($buffer) {
+  private function minimize_css($buffer)
+  {
     // ※ reduced the processing intensity.
     $search = array(
       // remove comments
