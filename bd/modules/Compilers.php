@@ -165,7 +165,7 @@ final class Compilers
       {
         $frontmatter = '';
         $body = $src;
-        if (preg_match('{^\s*?---\s+([\S\s]*?)\s+---\s*([\S\s]*)$}', $src, $match)) {
+        if (preg_match('/\\A(?:---(.*?)?\\R---)(\\R.*)?\\Z/s', $src, $match)) {
           $frontmatter = $match[1];
           $body = '';
           if (count($match) > 2) {
