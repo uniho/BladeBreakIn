@@ -5,10 +5,11 @@
 ])
 
 <?php
-  if (!is_null($style)) {
-    // Dynamic SCSS
-    $css = Compilers::scss()->inline(e($style));
-    $style = new Illuminate\View\ComponentSlot('<style>' . $css . '</style>');
+  // Dynamic SCSS
+  $style = $__env->yieldPushContent('style');
+  if ($style) {
+    $style = Compilers::scss()->inline($style);
+    $style = new Illuminate\View\ComponentSlot('<style>' . $style . '</style>');
   }
 ?>
 
