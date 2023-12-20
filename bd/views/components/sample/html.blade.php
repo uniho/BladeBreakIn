@@ -4,6 +4,14 @@
   'header' => '',
 ])
 
+<?php
+  if (!is_null($style)) {
+    // Dynamic SCSS
+    $css = Compilers::scss()->inline(e($style));
+    $style = new Illuminate\View\ComponentSlot('<style>' . $css . '</style>');
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,6 +22,7 @@
     <link rel="stylesheet" href="fd/css/preflight.css">
     <link rel="stylesheet" href="fd/css/style.css">
     {{ $header }}
+    {{ $style }}
   </head>
   <body>
     {{ $slot }}
