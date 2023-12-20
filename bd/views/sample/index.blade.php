@@ -43,6 +43,10 @@
   $error = request()->query('error');
 ?>
 
+@props([
+  'uniq_class' => '_SC_' . uniqid(),
+])
+
 <x-sample.html>
   <x-slot:title>
     {{ HQ::getenv('CCC::APP_NAME') }} 
@@ -53,7 +57,7 @@
   </x-slot>  
 
   {{-- slot --}}
-  <div class="wrapper">
+  <div class="{{$uniq_class}} wrapper">
     <div class="title">
       {{ HQ::getenv('CCC::APP_NAME') }} 
     </div>  
@@ -106,24 +110,26 @@
     @endif
   </div>
 
+{{-- Dynamic SCSS --}}
+@push('style')
+// <style>
 
-  {{-- Dynamic SCSS --}}
-  <x-slot:style>
-    // <style>
-    
-    .color-box {
-      border: yellow 1px solid;
-      padding: 1rem;
+// You can use SCSS style!!
+
+.{{ $uniq_class }} {
+  .color-box {
+    border: yellow 1px solid;
+    padding: 1rem;
+  }
+
+  form {
+    textarea {
+      width: 100%;
     }
+  }
+}
 
-    // You can use SCSS style!!
-    form {
-      textarea {
-        width: 100%;
-      }
-    }
-
-    // </style>
-  </x-slot>  
+// </style>
+@endpush  
 
 </x-sample.html>
