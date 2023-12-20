@@ -1,4 +1,4 @@
-@php
+<?php
   $INTERVAL = 10;
 
   if (request()->isMethod('post')) {
@@ -41,8 +41,7 @@
   }
 
   $error = request()->query('error');
-
-@endphp
+?>
 
 <x-sample.html>
   <x-slot:title>
@@ -51,15 +50,6 @@
 
   <x-slot:header>
     <link rel="stylesheet" href="?css_route=sample.style">
-    <style>
-      .color-box {
-        border: yellow 1px solid;
-        padding: 1rem;
-      }
-      textarea {
-        width: 100%;
-      }
-    </style>
   </x-slot>  
 
   {{-- slot --}}
@@ -115,4 +105,25 @@
       </div>
     @endif
   </div>
+
+
+  {{-- Dynamic SCSS --}}
+  <x-slot:style>
+    // <style>
+    
+    .color-box {
+      border: yellow 1px solid;
+      padding: 1rem;
+    }
+
+    // You can use SCSS style!!
+    form {
+      textarea {
+        width: 100%;
+      }
+    }
+
+    // </style>
+  </x-slot>  
+
 </x-sample.html>
