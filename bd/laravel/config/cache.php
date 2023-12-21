@@ -106,6 +106,6 @@ return [
     |
     */
 
-    'prefix' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_'.md5($_SERVER['DOCUMENT_ROOT']).'_cache_', // ※
+    'prefix' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_'.md5(__BASE_DIR__).'_cache_', // ※
 
 ];
