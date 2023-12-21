@@ -126,10 +126,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
-    ),
+    'cookie' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_'.md5(__BASE_DIR__).'_session', // ※
 
     /*
     |--------------------------------------------------------------------------
