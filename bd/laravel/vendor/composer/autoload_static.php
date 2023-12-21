@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb836e80026ff5de7e14990295f93e669
+class ComposerStaticInit7d8561373c8639d89f0eefacb052de28
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -31,6 +31,7 @@ class ComposerStaticInitb836e80026ff5de7e14990295f93e669
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
+        'f57d353b41eb2e234b26064d63d8c5dd' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
@@ -2839,6 +2840,7 @@ class ComposerStaticInitb836e80026ff5de7e14990295f93e669
         'Illuminate\\View\\Compilers\\Concerns\\CompilesLayouts' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesLayouts.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesLoops' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesLoops.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesRawPhp' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesRawPhp.php',
+        'Illuminate\\View\\Compilers\\Concerns\\CompilesSessions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesSessions.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesStacks' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesStacks.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesStyles' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesStyles.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesTranslations' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Compilers/Concerns/CompilesTranslations.php',
@@ -6628,9 +6630,9 @@ class ComposerStaticInitb836e80026ff5de7e14990295f93e669
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb836e80026ff5de7e14990295f93e669::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb836e80026ff5de7e14990295f93e669::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb836e80026ff5de7e14990295f93e669::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$classMap;
 
         }, null, ClassLoader::class);
     }
