@@ -126,7 +126,7 @@ return [
     |
     */
 
-    'cookie' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_'.md5(__BASE_DIR__).'_session', // ※
+    'cookie' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_session', // ※
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +139,7 @@ return [
     |
     */
 
-    'path' => '/',
+    'path' => $_SERVER["DOCUMENT_ROOT"] === __BASE_DIR__ ? '/' : substr(__BASE_DIR__, strlen($_SERVER["DOCUMENT_ROOT"])), // ※
 
     /*
     |--------------------------------------------------------------------------
