@@ -19,9 +19,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>{{ $title }}</title>
-    <link rel="stylesheet" href="fd/css/normalize.css">
-    <link rel="stylesheet" href="fd/css/preflight.css">
-    <link rel="stylesheet" href="fd/css/style.css">
+    <link rel="stylesheet" href="{{request()->root()}}/fd/css/normalize.css">
+    <link rel="stylesheet" href="{{request()->root()}}/fd/css/preflight.css">
+    <link rel="stylesheet" href="{{request()->root()}}/fd/css/style.css">
     {{ $header }}
     {{ $style }}
   </head>
