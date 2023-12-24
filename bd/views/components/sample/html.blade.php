@@ -8,8 +8,14 @@
   // Dynamic SCSS
   $style = $__env->yieldPushContent('style');
   if ($style) {
-    $style = Compilers::scss()->inline($style);
-    $style = new Illuminate\View\ComponentSlot('<style>' . $style . '</style>');
+    $cahce_key = '__::scss_inline_cache::__'.$style;
+    if (Cache::store('file')->has($cahce_key)) {
+      $style = Cache::store('file')->get($cahce_key);
+    } else {
+      $style = Compilers::scss()->inline($style);
+      $style = new Illuminate\View\ComponentSlot('<style>' . $style . '</style>');
+      Cache::store('file')->put($cahce_key, $style, now()->addDays(14));
+    }
   }
 ?>
 
