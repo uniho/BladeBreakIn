@@ -2,7 +2,7 @@
 //
 export const main = async props => {
   const page = await import(`~/?js_route=sample.${props.page ?? 1}`);
-  const newProps = Object.assign(props, page.main ? await page.main() : {});
+  const newProps = Object.assign(props, page.main ? await page.main(props) : {});
   const Page = page.default;
   const root = ReactDOM.createRoot(document.getElementById("app"));
   root.render(React.createElement(Page, newProps));
