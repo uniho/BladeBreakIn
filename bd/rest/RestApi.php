@@ -12,9 +12,9 @@ final class Procedures
     try {
       if (preg_match(self::PREG_QUERY, $request->query('rest_route'), $match)) {
         foreach ($match as $key => $value) {
-          if (!is_int($key)) $request[$key] = $value;
+          if (!is_int($key)) $request->query->add([$key => $value]);
         }  
-        unset($request['rest_route']);
+        $request->query->remove('rest_route');
 
         $role = $request['_role'];
         if ($role != 'anon') {
