@@ -259,7 +259,7 @@ class _Compiler extends \Illuminate\View\Compilers\Compiler
 {
   public function __construct(protected $core, protected $data, protected $options)
   {
-    parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']));
+    parent::__construct(app()['files'], app()['config']['view.compiled'], shouldCache: !isset($options['force_compile']) || !$options['force_compile']);
   }
 }
 
