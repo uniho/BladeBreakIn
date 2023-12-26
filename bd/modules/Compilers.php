@@ -382,7 +382,9 @@ final class JavaScriptMinify
     $replaces['[<!--(?![<>\[\]]).*?(?<![<>\[\]])-->]s'] = '';
 
     // Remove spaces after newline characters, and leading and trailing whitespace.
-    $replaces['[\n\s*(\S)|\A\s+|\s+\z]s'] = '${1}';
+    // $replaces['[\n\s*(\S)|\A\s+|\s+\z]s'] = '${1}';
+    $replaces['[\n\s*(\S)]s'] = ' ${1}';
+    $replaces['[\A\s+|\s+\z]s'] = '${1}';
 
     $buffer = preg_replace(array_keys($replaces), array_values($replaces), $buffer);
 
