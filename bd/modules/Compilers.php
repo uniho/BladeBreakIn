@@ -320,8 +320,8 @@ final class JavaScriptMinify
           // ${} 部分で区切られた配列となっている
           $src = '';
           $sls = $node->getquasi()->getquasis(); // 文字列部分
-          foreach ($sls as $sl) {
-            $src .= $sl->getrawValue() . self::SEPARATOR;
+          foreach ($sls as $key => $sl) {
+            $src .= ($key == 0 ? '' : self::SEPARATOR) . $sl->getrawValue();
           }
           $src = $this->minimize_jsx($src);
           $arr = explode(self::SEPARATOR, $src);
