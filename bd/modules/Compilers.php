@@ -365,7 +365,7 @@ final class JavaScriptMinify
       }
     }
 
-    // Hold "\n" when tas is <pre> or <textarea>.
+    // Hold "\n" when tag is <pre> or <textarea>.
     if (preg_match_all('[<(?:pre|textarea)(?: [^>]+)?>(.+?)</(?:pre|textarea)>]is', $buffer, $matches, PREG_SET_ORDER)) {
       foreach ($matches as $match) {
         $replaces[$match[1]] = str_replace("\n", self::CR, $match[1]);
@@ -381,14 +381,13 @@ final class JavaScriptMinify
     // Remove comments
     $replaces['[<!--(?![<>\[\]]).*?(?<![<>\[\]])-->]s'] = '';
 
-    // Remove spaces after newline characters, and leading and trailing whitespace.
-    // $replaces['[\n\s*(\S)|\A\s+|\s+\z]s'] = '${1}';
+    // Remove spaces after newline characters.
     $replaces['[\n\s*(\S)]s'] = ' ${1}';
-    $replaces['[\A\s+|\s+\z]s'] = '${1}';
 
     $buffer = preg_replace(array_keys($replaces), array_values($replaces), $buffer);
 
-    $buffer = str_replace(self::CR, "\n", $buffer);
+    // Remove leading and trailing whitespace, and recover \n in <pre> or <textarea>.
+    $buffer = str_replace(self::CR, "\n", trim($buffer));
 
     return $buffer;
   }
