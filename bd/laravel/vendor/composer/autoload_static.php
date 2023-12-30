@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7d8561373c8639d89f0eefacb052de28
+class ComposerStaticInit599c6eca2b817cbf32e75f71d3d3c69d
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -1797,6 +1797,7 @@ class ComposerStaticInit7d8561373c8639d89f0eefacb052de28
         'Illuminate\\Console\\MigrationGeneratorCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/MigrationGeneratorCommand.php',
         'Illuminate\\Console\\OutputStyle' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/OutputStyle.php',
         'Illuminate\\Console\\Parser' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Parser.php',
+        'Illuminate\\Console\\PromptValidationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/PromptValidationException.php',
         'Illuminate\\Console\\QuestionHelper' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/QuestionHelper.php',
         'Illuminate\\Console\\Scheduling\\CacheAware' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Scheduling/CacheAware.php',
         'Illuminate\\Console\\Scheduling\\CacheEventMutex' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Scheduling/CacheEventMutex.php',
@@ -4218,6 +4219,7 @@ class ComposerStaticInit7d8561373c8639d89f0eefacb052de28
         'PHPUnit\\Runner\\ClassIsAbstractException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Exception/ClassIsAbstractException.php',
         'PHPUnit\\Runner\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/CodeCoverage.php',
         'PHPUnit\\Runner\\DirectoryCannotBeCreatedException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Exception/DirectoryCannotBeCreatedException.php',
+        'PHPUnit\\Runner\\ErrorException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Exception/ErrorException.php',
         'PHPUnit\\Runner\\ErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/ErrorHandler.php',
         'PHPUnit\\Runner\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Exception/Exception.php',
         'PHPUnit\\Runner\\Extension\\Extension' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Extension/Extension.php',
@@ -6630,9 +6632,9 @@ class ComposerStaticInit7d8561373c8639d89f0eefacb052de28
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7d8561373c8639d89f0eefacb052de28::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit599c6eca2b817cbf32e75f71d3d3c69d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit599c6eca2b817cbf32e75f71d3d3c69d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit599c6eca2b817cbf32e75f71d3d3c69d::$classMap;
 
         }, null, ClassLoader::class);
     }
