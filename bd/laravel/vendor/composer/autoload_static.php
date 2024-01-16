@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit81eb27dc6ff812cebf547a198fe08877
+class ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -4130,6 +4130,15 @@ class ComposerStaticInit81eb27dc6ff812cebf547a198fe08877
         'PHPUnit\\Logging\\TestDox\\TestResultCollectionIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/TestResultCollectionIterator.php',
         'PHPUnit\\Logging\\TestDox\\TestResultCollector' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/TestResultCollector.php',
         'PHPUnit\\Logging\\TestDox\\TestSkippedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestSkippedSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredDeprecationSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredNoticeSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpDeprecationSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpNoticeSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpWarningSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpunitDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpunitDeprecationSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpunitErrorSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpunitErrorSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredPhpunitWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredPhpunitWarningSubscriber.php',
+        'PHPUnit\\Logging\\TestDox\\TestTriggeredWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredWarningSubscriber.php',
         'PHPUnit\\Metadata\\After' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/After.php',
         'PHPUnit\\Metadata\\AfterClass' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/AfterClass.php',
         'PHPUnit\\Metadata\\Annotation\\Parser\\DocBlock' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Parser/Annotation/DocBlock.php',
@@ -6626,9 +6635,9 @@ class ComposerStaticInit81eb27dc6ff812cebf547a198fe08877
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit81eb27dc6ff812cebf547a198fe08877::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit81eb27dc6ff812cebf547a198fe08877::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit81eb27dc6ff812cebf547a198fe08877::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$classMap;
 
         }, null, ClassLoader::class);
     }
