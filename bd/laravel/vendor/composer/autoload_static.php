@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b
+class ComposerStaticInit7703c9f619d9c5d76452b8a5563e3882
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -2515,6 +2515,7 @@ class ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b
         'Illuminate\\Queue\\Events\\JobProcessed' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobProcessed.php',
         'Illuminate\\Queue\\Events\\JobProcessing' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobProcessing.php',
         'Illuminate\\Queue\\Events\\JobQueued' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobQueued.php',
+        'Illuminate\\Queue\\Events\\JobQueueing' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobQueueing.php',
         'Illuminate\\Queue\\Events\\JobReleasedAfterException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobReleasedAfterException.php',
         'Illuminate\\Queue\\Events\\JobRetryRequested' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobRetryRequested.php',
         'Illuminate\\Queue\\Events\\JobTimedOut' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Events/JobTimedOut.php',
@@ -3585,6 +3586,7 @@ class ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b
         'Nette\\Utils\\ImageColor' => __DIR__ . '/..' . '/nette/utils/src/Utils/ImageColor.php',
         'Nette\\Utils\\ImageException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\ImageType' => __DIR__ . '/..' . '/nette/utils/src/Utils/ImageType.php',
+        'Nette\\Utils\\Iterables' => __DIR__ . '/..' . '/nette/utils/src/Utils/Iterables.php',
         'Nette\\Utils\\Json' => __DIR__ . '/..' . '/nette/utils/src/Utils/Json.php',
         'Nette\\Utils\\JsonException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\ObjectHelpers' => __DIR__ . '/..' . '/nette/utils/src/Utils/ObjectHelpers.php',
@@ -6635,9 +6637,9 @@ class ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0e564ed8120cc0963fcb732ddefdb63b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7703c9f619d9c5d76452b8a5563e3882::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7703c9f619d9c5d76452b8a5563e3882::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7703c9f619d9c5d76452b8a5563e3882::$classMap;
 
         }, null, ClassLoader::class);
     }
