@@ -4,25 +4,25 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
+class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
@@ -573,7 +573,6 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'Barryvdh\\Debugbar\\DataCollector\\LaravelCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/LaravelCollector.php',
         'Barryvdh\\Debugbar\\DataCollector\\LivewireCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/LivewireCollector.php',
         'Barryvdh\\Debugbar\\DataCollector\\LogsCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/LogsCollector.php',
-        'Barryvdh\\Debugbar\\DataCollector\\ModelsCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/ModelsCollector.php',
         'Barryvdh\\Debugbar\\DataCollector\\MultiAuthCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/MultiAuthCollector.php',
         'Barryvdh\\Debugbar\\DataCollector\\PhpInfoCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/PhpInfoCollector.php',
         'Barryvdh\\Debugbar\\DataCollector\\QueryCollector' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/DataCollector/QueryCollector.php',
@@ -750,6 +749,7 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'DebugBar\\DataCollector\\MemoryCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/MemoryCollector.php',
         'DebugBar\\DataCollector\\MessagesAggregateInterface' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/MessagesAggregateInterface.php',
         'DebugBar\\DataCollector\\MessagesCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/MessagesCollector.php',
+        'DebugBar\\DataCollector\\ObjectCountCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/ObjectCountCollector.php',
         'DebugBar\\DataCollector\\PDO\\PDOCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/PDO/PDOCollector.php',
         'DebugBar\\DataCollector\\PDO\\TraceablePDO' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/PDO/TraceablePDO.php',
         'DebugBar\\DataCollector\\PDO\\TraceablePDOStatement' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataCollector/PDO/TraceablePDOStatement.php',
@@ -761,6 +761,8 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'DebugBar\\DataFormatter\\DataFormatter' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/DataFormatter.php',
         'DebugBar\\DataFormatter\\DataFormatterInterface' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/DataFormatterInterface.php',
         'DebugBar\\DataFormatter\\DebugBarVarDumper' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/DebugBarVarDumper.php',
+        'DebugBar\\DataFormatter\\HasDataFormatter' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/HasDataFormatter.php',
+        'DebugBar\\DataFormatter\\HasXdebugLinks' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/HasXdebugLinks.php',
         'DebugBar\\DataFormatter\\VarDumper\\DebugBarHtmlDumper' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DataFormatter/VarDumper/DebugBarHtmlDumper.php',
         'DebugBar\\DebugBar' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DebugBar.php',
         'DebugBar\\DebugBarException' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/DebugBarException.php',
@@ -2034,6 +2036,8 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'Illuminate\\Database\\DeadlockException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/DeadlockException.php',
         'Illuminate\\Database\\DetectsConcurrencyErrors' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/DetectsConcurrencyErrors.php',
         'Illuminate\\Database\\DetectsLostConnections' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/DetectsLostConnections.php',
+        'Illuminate\\Database\\Eloquent\\Attributes\\ObservedBy' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Attributes/ObservedBy.php',
+        'Illuminate\\Database\\Eloquent\\Attributes\\ScopedBy' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Attributes/ScopedBy.php',
         'Illuminate\\Database\\Eloquent\\BroadcastableModelEventOccurred' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/BroadcastableModelEventOccurred.php',
         'Illuminate\\Database\\Eloquent\\BroadcastsEvents' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/BroadcastsEvents.php',
         'Illuminate\\Database\\Eloquent\\BroadcastsEventsAfterCommit' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/BroadcastsEventsAfterCommit.php',
@@ -2329,6 +2333,7 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithExceptionHandling' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithExceptionHandling.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithRedis' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithSession' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php',
+        'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithTestCaseLifecycle' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTestCaseLifecycle.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithTime' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithTime.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithViews' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithViews.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php',
@@ -5221,6 +5226,7 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'SQLite3Exception' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
@@ -6638,9 +6644,9 @@ class ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1957179fc12de0419d0d699ad6d2cf8f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9c491b8531eec05ba41a11d9276a5749::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9c491b8531eec05ba41a11d9276a5749::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9c491b8531eec05ba41a11d9276a5749::$classMap;
 
         }, null, ClassLoader::class);
     }
