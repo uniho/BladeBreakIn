@@ -169,7 +169,7 @@ final class HQ
       return 0;
     } 
 
-    return json_decode(\CachedConfig::get('$$__maintenance'), true)['level'];
+    return \CachedConfig::get('$$__maintenance')['level'];
   }
 
   public static function getMaintenanceData()
@@ -182,7 +182,7 @@ final class HQ
       return false;
     } 
 
-    return json_decode(\CachedConfig::get('$$__maintenance'), true);
+    return \CachedConfig::get('$$__maintenance');
   }
 
   public static function setMaintenanceMode($level, $data = [])
@@ -206,7 +206,7 @@ final class HQ
 
     if ($level) {
       $data['level'] = $level;
-      \CachedConfig::set('$$__maintenance', json_encode($data));
+      \CachedConfig::set('$$__maintenance', $data);
     } else {
       \CachedConfig::delete('$$__maintenance');
     }
