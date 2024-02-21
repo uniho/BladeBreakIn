@@ -98,11 +98,6 @@ final class HQ
         return App::abort(403);
       }
 
-      if (basename(url()->current()) == 'adminer.php') {
-        require 'bd/vendor/adminer/adminer-4.8.1-en.php';
-        exit();
-      }
-
     }
 
     if (view()->exists('index')) {
