@@ -65,10 +65,4 @@ class On
       return $request->path();
     });
   }
-  
-  // Called from laravel/routes/api.php
-  public static function onApi()
-  {
-    \Log::debug('api!');
-  }
 }

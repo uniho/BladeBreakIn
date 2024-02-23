@@ -18,4 +18,4 @@
 //   return $request->user();
 // });
 
-\HQ::onApi($router);
+return \App::abort(404);
