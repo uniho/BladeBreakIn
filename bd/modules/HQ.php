@@ -46,13 +46,6 @@ final class HQ
     }
   }
 
-  public static function onApi($router)
-  {
-    if (self::on_exists() && method_exists(\HQ\On::class, 'onApi')) {
-      \HQ\On::onApi($router);
-    }
-  }
-
   public static function webOrigin($request)
   {
     if ($request->has('rest_route')) {
