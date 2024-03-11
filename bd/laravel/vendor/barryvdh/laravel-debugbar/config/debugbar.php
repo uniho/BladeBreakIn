@@ -60,7 +60,7 @@ return [
     |
     */
 
-    'editor' => env('DEBUGBAR_EDITOR', 'phpstorm'),
+    'editor' => env('DEBUGBAR_EDITOR') ?: env('IGNITION_EDITOR', 'phpstorm'),
 
     /*
     |--------------------------------------------------------------------------
@@ -245,6 +245,9 @@ return [
         'symfony_request' => [
             'hiddens' => [], // hides sensitive values using array paths, example: request_request.password
         ],
+        'events' => [
+            'data' => false, // collect events data, listeners
+        ],
         'logs' => [
             'file' => null,
         ],
@@ -305,7 +308,7 @@ return [
      | Switches between light and dark theme. If set to auto it will respect system preferences
      | Possible values: auto, light, dark
      */
-    'theme' => env('DEBUGBAR_THEME', 'auto'),
+    'theme' => env('DEBUGBAR_THEME', 'dark'),
 
     /*
      |--------------------------------------------------------------------------

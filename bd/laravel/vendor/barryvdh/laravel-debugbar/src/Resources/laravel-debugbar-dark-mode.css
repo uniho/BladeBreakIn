@@ -9,9 +9,9 @@ div.phpdebugbar-openhandler {
     --color-gray-500: #A0AEC0;
     --color-gray-600: #718096;
     --color-gray-700: #4A5568;
-    --color-gray-800: #2D3748;
-    --color-gray-900: #1A202C;
-    --color-red-vivid: #FF0040;
+    --color-gray-800: #252a37;
+    --color-gray-900: #18181b;
+    --color-red-vivid: #eb4432;
 }
 
 div.phpdebugbar,
@@ -152,8 +152,23 @@ div.phpdebugbar-widgets-messages li.phpdebugbar-widgets-list-item span.phpdebugb
     color: #7B7B7B;
 }
 
+div.phpdebugbar pre.sf-dump .sf-dump-note {
+    color: #8be9fd;
+}
+
+div.phpdebugbar pre.sf-dump .sf-dump-num,
+div.phpdebugbar pre.sf-dump .sf-dump-const,
+div.phpdebugbar pre.sf-dump .sf-dump-index {
+    color: #bd93f9;
+}
+
+div.phpdebugbar pre.sf-dump .sf-dump-key,
+div.phpdebugbar pre.sf-dump .sf-dump-str {
+    color: #f1fa8c;
+}
+
 div.phpdebugbar-openhandler {
-    border-top-color: #fa5661;
+    border-top-color: var(--color-red-vivid);
 }
 
 div.phpdebugbar div.phpdebugbar-header .phpdebugbar-tab {
