@@ -245,7 +245,7 @@ final class HQ
   public static function allowDebugbar() {
     if (basename(url()->current()) == 'debugbar.php') {
       $user = \Auth::user();
-      if ($user && method_exists($user, 'isAdmin') && $user->isAdmin()) {
+      if ($user && class_exists('\Models\UserEx') && \Models\UserEx::find($user->id)->isAdmin()) {
         return true;
       }
 
