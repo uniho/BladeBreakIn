@@ -19,14 +19,14 @@ final class Procedures
         $role = $request['_role'];
         if ($role != 'anon') {
           $user = \Auth::user();
-          if (!\Auth::check() || !$user || !$user->hasRole($role)) {
+          if (!\Auth::check() || !$user || !class_exists('\Models\UserEx') || !\Models\UserEx::find($user->id)->hasRole($role)) {
             throw new \Exception('You are not authorized to access this page.');
           }
         }
 
         if (!in_array($request['_cmd'], ['login', 'logout', 'token']) && \HQ::getMaintenanceMode()) {
           $user = \Auth::user();
-          if (!$user || !method_exists($user, 'isAdmin') || !$user->isAdmin()) {
+          if (!$user || !class_exists('\Models\UserEx') || !\Models\UserEx::find($user->id)->isAdmin()) {
             throw new \Exception('page under maintenance');
           }
         }
