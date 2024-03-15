@@ -18,15 +18,13 @@ final class Procedures
 
         $role = $request['_role'];
         if ($role != 'anon') {
-          $user = \Auth::user();
-          if (!\Auth::check() || !$user || !class_exists('\Models\UserEx') || !\Models\UserEx::find($user->id)->hasRole($role)) {
+          if (!self::hasRole($role)) {
             throw new \Exception('You are not authorized to access this page.');
           }
         }
 
         if (!in_array($request['_cmd'], ['login', 'logout', 'token']) && \HQ::getMaintenanceMode()) {
-          $user = \Auth::user();
-          if (!$user || !class_exists('\Models\UserEx') || !\Models\UserEx::find($user->id)->isAdmin()) {
+          if (!self::isAdmin()) {
             throw new \Exception('page under maintenance');
           }
         }
@@ -67,5 +65,19 @@ final class Procedures
       return $result;
     }
     return false;
+  }
+
+  //
+  public static function isAdmin()
+  {
+    $user = \Auth::user();
+    return $user && class_exists('\Models\UserEx') && \Models\UserEx::find($user->id)->isAdmin();
+  }
+
+  //
+  public static function hasRole($role)
+  {
+    $user = \Auth::user();
+    return $user && class_exists('\Models\UserEx') && \Models\UserEx::find($user->id)->hasRole($role);
   }
 }
