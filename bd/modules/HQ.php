@@ -264,11 +264,6 @@ final class HQ
     }
   }
 
-  public static function basePath($path = '')
-  {
-    return __BASE_DIR__.'/'.rtrim($path, '\/');
-  }
-
   public static function getConfigFile(): string
   {
     $file = __DIR__.'/../config.php';
