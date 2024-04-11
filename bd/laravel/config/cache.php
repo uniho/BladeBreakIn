@@ -106,6 +106,6 @@ return [
     |
     */
 
-    'prefix' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_'.md5(__BASE_DIR__).'_cache_', // ※
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
 
 ];
