@@ -139,7 +139,7 @@ return [
     |
     */
 
-    'path' => $_SERVER["DOCUMENT_ROOT"] === __BASE_DIR__ ? '/' : substr(__BASE_DIR__, strlen($_SERVER["DOCUMENT_ROOT"])), // ※
+    'path' => $_SERVER["DOCUMENT_ROOT"] === \CCC::BASE_DIR ? '/' : substr(\CCC::BASE_DIR, strlen($_SERVER["DOCUMENT_ROOT"])), // ※
 
     /*
     |--------------------------------------------------------------------------

@@ -1,7 +1,6 @@
 <?php
 
 define('LARAVEL_START', microtime(true));
-define('__BASE_DIR__', __DIR__);
 
 require_once 'bd/modules/autoload.php';
 require_once 'bd/laravel/vendor/autoload.php';
