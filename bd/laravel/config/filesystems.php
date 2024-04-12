@@ -32,13 +32,13 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => \HQ::getenv('CCC::STORAGE_LOCAL_PRIVATE_FILES_PATH'), // ※,
             'throw' => false,
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => \HQ::getenv('CCC::STORAGE_LOCAL_PUBLIC_FILES_PATH'), // ※,
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,

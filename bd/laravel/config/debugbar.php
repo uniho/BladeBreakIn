@@ -38,7 +38,7 @@ return [
      */
     'storage' => [
         'enabled'    => true,
-        'open'       => env('DEBUGBAR_OPEN_STORAGE'), // bool/callback.
+        'open'       => true, // ※ env('DEBUGBAR_OPEN_STORAGE', false), // bool/callback.
         'driver'     => 'file', // redis, file, pdo, socket, custom
         'path'       => storage_path('debugbar'), // For file driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
@@ -176,7 +176,7 @@ return [
         'laravel'         => false, // Laravel version and environment
         'events'          => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
-        'logs'            => false, // Add the latest log messages
+        'logs'            => true,  // ※ // Add the latest log messages
         'files'           => false, // Show the included files
         'config'          => false, // Display config settings
         'cache'           => false, // Display cache events
@@ -270,7 +270,7 @@ return [
      |
      */
 
-    'inject' => true,
+    'inject' => false, // ※
 
     /*
      |--------------------------------------------------------------------------

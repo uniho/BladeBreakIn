@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    'driver' => env('SESSION_DRIVER', 'file'), // ※ 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -127,10 +127,11 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
-    ),
+    // 'cookie' => env(
+    //     'SESSION_COOKIE',
+    //     Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+    // ),
+    'cookie' => Str::slug(\HQ::getenv('CCC::APP_NAME'), '_').'_session', // ※
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +144,8 @@ return [
     |
     */
 
-    'path' => env('SESSION_PATH', '/'),
+    // 'path' => env('SESSION_PATH', '/'),
+    'path' => $_SERVER["DOCUMENT_ROOT"] === \CCC::BASE_DIR ? '/' : substr(\CCC::BASE_DIR, strlen($_SERVER["DOCUMENT_ROOT"])), // ※
 
     /*
     |--------------------------------------------------------------------------
