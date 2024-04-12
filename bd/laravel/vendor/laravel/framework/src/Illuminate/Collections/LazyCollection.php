@@ -428,7 +428,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * @param  (callable(TValue, TKey): bool)|null  $callback
      * @return static
      */
-    public function filter(callable $callback = null)
+    public function filter(?callable $callback = null)
     {
         if (is_null($callback)) {
             $callback = fn ($value) => (bool) $value;
@@ -452,7 +452,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * @param  TFirstDefault|(\Closure(): TFirstDefault)  $default
      * @return TValue|TFirstDefault
      */
-    public function first(callable $callback = null, $default = null)
+    public function first(?callable $callback = null, $default = null)
     {
         $iterator = $this->getIterator();
 
@@ -638,7 +638,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * @param  callable(TValue, TValue): int  $callback
      * @return static
      */
-    public function intersectUsing()
+    public function intersectUsing($items, callable $callback)
     {
         return $this->passthru('intersectUsing', func_get_args());
     }
@@ -732,7 +732,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * @param  TLastDefault|(\Closure(): TLastDefault)  $default
      * @return TValue|TLastDefault
      */
-    public function last(callable $callback = null, $default = null)
+    public function last(?callable $callback = null, $default = null)
     {
         $needle = $placeholder = new stdClass;
 
@@ -1096,12 +1096,11 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     /**
      * Shuffle the items in the collection.
      *
-     * @param  int|null  $seed
      * @return static
      */
-    public function shuffle($seed = null)
+    public function shuffle()
     {
-        return $this->passthru('shuffle', func_get_args());
+        return $this->passthru('shuffle', []);
     }
 
     /**

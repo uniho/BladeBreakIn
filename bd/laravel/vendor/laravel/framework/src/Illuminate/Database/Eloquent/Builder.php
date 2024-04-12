@@ -202,7 +202,7 @@ class Builder implements BuilderContract
      * @param  array|null  $scopes
      * @return $this
      */
-    public function withoutGlobalScopes(array $scopes = null)
+    public function withoutGlobalScopes(?array $scopes = null)
     {
         if (! is_array($scopes)) {
             $scopes = array_keys($this->scopes);
@@ -524,7 +524,7 @@ class Builder implements BuilderContract
      * @param  \Closure|null  $callback
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|mixed
      */
-    public function findOr($id, $columns = ['*'], Closure $callback = null)
+    public function findOr($id, $columns = ['*'], ?Closure $callback = null)
     {
         if ($columns instanceof Closure) {
             $callback = $columns;
@@ -627,7 +627,7 @@ class Builder implements BuilderContract
      * @param  \Closure|null  $callback
      * @return \Illuminate\Database\Eloquent\Model|static|mixed
      */
-    public function firstOr($columns = ['*'], Closure $callback = null)
+    public function firstOr($columns = ['*'], ?Closure $callback = null)
     {
         if ($columns instanceof Closure) {
             $callback = $columns;
@@ -889,6 +889,8 @@ class Builder implements BuilderContract
 
         $column = $column instanceof Expression ? $column->getValue($this->getGrammar()) : $column;
 
+        $column = Str::after($column, "{$this->model->getTable()}.");
+
         // If the model has a mutator for the requested column, we will spin through
         // the results and mutate the values so that the mutated version of these
         // columns are returned as you would expect from these Eloquent models.
@@ -915,11 +917,11 @@ class Builder implements BuilderContract
      *
      * @throws \InvalidArgumentException
      */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null, $total = null)
     {
         $page = $page ?: Paginator::resolveCurrentPage($pageName);
 
-        $total = func_num_args() === 5 ? value(func_get_arg(4)) : $this->toBase()->getCountForPagination();
+        $total = value($total) ?? $this->toBase()->getCountForPagination();
 
         $perPage = ($perPage instanceof Closure
             ? $perPage($total)
