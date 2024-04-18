@@ -36,28 +36,25 @@ class On
     \Log::debug(request()->query("test"));
   } 
   
-  // Called from App\Console\Kernel::schedule()
-  public static function onSchedule($schedule)
+  // Called from routes/console.php
+  // Define the application's command schedule and application's command schedule.
+  // See
+  //   https://laravel.com/docs/11.x/scheduling
+  //   https://laravel.com/docs/11.x/artisan#closure-commands 
+  public static function onConsole()
   {
-    \Log::debug('schedule!');
-  }
-
-  // Called from App\Console\Kernel::commands()
-  public static function onCommands()
-  {
-    \Log::debug('commands!');
+    \Log::debug('onConsole!');
 
     // 例： inspire2 という Artisan Command を追加する
     \Artisan::command('inspire2', function () {
         $this->comment(\Inspiring::quote());
     })->purpose('Display an inspiring quote v2');
-    
   } 
 
   // Called from laravel/routes/web.php
   public static function onWeb($router)
   {
-    \Log::debug('web!');
+    \Log::debug('onWeb!');
 
     // You can use $router->get() instead of \Router::get()
     \Route::get('test', function (Request $request) {

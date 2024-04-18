@@ -18,17 +18,10 @@ final class HQ
     }
   }
 
-  public static function onSchedule($schedule)
+  public static function onConsole()
   {
-    if (self::on_exists() && method_exists(\HQ\On::class, 'onSchedule')) {
-      \HQ\On::onSchedule($schedule);
-    }
-  }
-
-  public static function onCommands()
-  {
-    if (self::on_exists() && method_exists(\HQ\On::class, 'onCommands')) {
-      \HQ\On::onCommands();
+    if (self::on_exists() && method_exists(\HQ\On::class, 'onConsole')) {
+      \HQ\On::onConsole();
     }
   }
 

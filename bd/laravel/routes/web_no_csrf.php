@@ -1,3 +1,0 @@
-<?php
-
-\HQ::onWebNoCsrf($router);
