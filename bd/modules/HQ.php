@@ -32,13 +32,6 @@ final class HQ
     }
   }
 
-  public static function onWebNoCsrf($router)
-  {
-    if (self::on_exists() && method_exists(\HQ\On::class, 'onWebNoCsrf')) {
-      \HQ\On::onWebNoCsrf($router);
-    }
-  }
-
   public static function webOrigin($request)
   {
     if ($request->has('rest_route')) {
