@@ -57,9 +57,3 @@ if (!is_file($configFile) || filemtime($configFile) !== filemtime($configFileCus
 
 $response = $response->send();
 $kernel->terminate($request, $response);
-
-// Batch Table のクリア
-if (\Unsta\FloodControl::isAllowed(\Utils\AsyncCLI::PLUNE_BATCHES_ID, 1, \Utils\AsyncCLI::PLUNE_BATCHES_INTERVAL, '')) {
-  \Unsta\FloodControl::register(\Utils\AsyncCLI::PLUNE_BATCHES_ID, \Utils\AsyncCLI::PLUNE_BATCHES_INTERVAL, '');
-  \Utils\AsyncCLI::pluneBatches();
-}
